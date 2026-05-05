@@ -19,14 +19,13 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Main content centering */
     .content {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -55%);
-      animation: fadeIn 0.9s ease-out forwards;
       opacity: 0;
+      animation: fadeIn 0.9s ease-out forwards;
     }
 
     .title {
@@ -40,7 +39,6 @@
     .subtitle {
       font-size: 34px;
       margin-top: 18px;
-      font-weight: 400;
       line-height: 1.2;
       color: rgba(0, 0, 0, 0.85);
     }
@@ -51,7 +49,6 @@
       color: rgba(0, 0, 0, 0.75);
     }
 
-    /* Footer */
     .footer {
       position: absolute;
       bottom: 22px;
@@ -63,9 +60,8 @@
       flex-direction: column;
       gap: 8px;
       text-align: center;
-
       opacity: 0;
-      animation: fadeIn 1.2s ease-out forwards;
+      animation: fadeInFooter 1.1s ease-out forwards;
       animation-delay: 0.2s;
     }
 
@@ -75,7 +71,6 @@
       justify-content: center;
       gap: 10px;
       white-space: nowrap;
-      line-height: 1.2;
     }
 
     .dot {
@@ -89,7 +84,6 @@
       font-weight: 500;
     }
 
-    /* Premium underline animation */
     .footer-link::after {
       content: "";
       position: absolute;
@@ -107,7 +101,6 @@
       transform: scaleX(1);
     }
 
-    /* Fade-in animation */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -117,11 +110,6 @@
         opacity: 1;
         transform: translate(-50%, -55%);
       }
-    }
-
-    /* Keep footer stable (override transform animation drift) */
-    .footer {
-      animation-name: fadeInFooter;
     }
 
     @keyframes fadeInFooter {
@@ -157,46 +145,6 @@
       <span class="dot">•</span>
       <span>GenView Group Ltd</span>
     </div>
-  </div>
-
-</body>
-</html>    }
-
-    .footer-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 100%;
-      height: 1px;
-      background: rgba(0, 0, 0, 0.75);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.2s ease;
-    }
-
-    .footer-link:hover::after {
-      transform: scaleX(1);
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="content">
-    <h1 class="title">GenView</h1>
-    <div class="subtitle">They'll decide your future.</div>
-    <div class="subtitle italic">Hear them first.</div>
-  </div>
-
-  <div class="footer">
-    <span>Coming soon</span>
-    <span class="dot">•</span>
-
-    <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">
-      Luke Hall
-    </a>
-    <span> @ GenView Group Ltd 2026</span>
   </div>
 
 </body>
