@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GenView — Hear them first</title>
+  <title>GenView</title>
 
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -19,17 +19,18 @@
       scroll-behavior: smooth;
     }
 
-    /* HERO */
-    .hero {
+    /* Shared section style */
+    section {
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
-    .title {
+    /* HERO */
+    .hero h1 {
       font-size: clamp(44px, 8vw, 96px);
       font-weight: 700;
       margin: 0;
@@ -37,54 +38,42 @@
       line-height: 1;
     }
 
-    .subtitle {
-      font-size: clamp(18px, 3.5vw, 34px);
-      margin-top: 14px;
-      color: rgba(0, 0, 0, 0.85);
-      line-height: 1.25;
+    .hero p {
+      font-size: clamp(18px, 3.2vw, 32px);
+      margin-top: 12px;
+      line-height: 1.2;
     }
 
-    .italic {
-      font-style: italic;
+    .hero em {
+      display: block;
       margin-top: 6px;
-      color: rgba(0, 0, 0, 0.75);
+      font-style: italic;
+      color: rgba(0,0,0,0.75);
     }
 
-    /* STAT SECTION */
-    .section {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 24px;
-    }
-
-    .stat {
-      font-size: clamp(22px, 3.5vw, 42px);
+    /* STORY */
+    .story {
+      font-size: clamp(20px, 3.5vw, 42px);
       max-width: 900px;
       line-height: 1.25;
       font-weight: 500;
     }
 
-    /* EMAIL SECTION */
-    .email-section {
-      min-height: 100vh;
+    /* EMAIL */
+    .email-wrap {
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
-      padding: 0 24px;
-      text-align: center;
+      align-items: center;
+      gap: 16px;
     }
 
-    .label {
-      font-size: 18px;
-      margin-bottom: 14px;
-      color: rgba(0, 0, 0, 0.75);
+    .email-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -1px;
     }
 
-    .email-box {
+    form {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -96,9 +85,9 @@
       font-size: 16px;
       border: 1px solid rgba(0,0,0,0.2);
       border-radius: 8px;
-      outline: none;
       width: 260px;
       background: rgba(255,255,255,0.35);
+      outline: none;
     }
 
     button {
@@ -115,7 +104,24 @@
       opacity: 0.85;
     }
 
-    /* Mobile polish */
+    /* subtle fade-in on scroll (progressive enhancement) */
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (max-width: 600px) {
       input[type="email"] {
         width: 100%;
@@ -127,30 +133,32 @@
 <body>
 
   <!-- HERO -->
-  <div class="hero">
+  <section class="hero">
     <div>
-      <h1 class="title">GenView</h1>
-      <div class="subtitle">They'll decide your future.</div>
-      <div class="subtitle italic">Hear them first.</div>
+      <h1>GenView</h1>
+      <p>They'll decide your future.</p>
+      <em>Hear them first.</em>
     </div>
-  </div>
+  </section>
 
-  <!-- STAT -->
-  <div class="section">
-    <div class="stat">
+  <!-- STORY / INSIGHT -->
+  <section>
+    <div class="story">
       90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
     </div>
-  </div>
+  </section>
 
   <!-- EMAIL -->
-  <div class="email-section">
-    <div class="label">Stay in touch</div>
+  <section>
+    <div class="email-wrap">
+      <div class="email-title">Stay in touch</div>
 
-    <form class="email-box" action="https://script.google.com/macros/s/AKfycbzz1ccaJ6EBPutX4hRooBo5ij1YpCHYNHWd0Gf8xW7p22Ay2Q9exrdK_IwHEDp7ho6C/exec" method="POST">
-      <input type="email" name="email" placeholder="Enter your email" required />
-      <button type="submit">Join</button>
-    </form>
-  </div>
+      <form action="PASTE_YOUR_SCRIPT_URL_HERE" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
 
 </body>
 </html>
