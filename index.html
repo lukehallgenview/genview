@@ -151,61 +151,64 @@
 
 <body>
 
-<div class="wrap">
+  <!-- HERO (FULL SCREEN, NOT INSIDE WRAP) -->
+  <div style="height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 24px;">
+    <div>
+      <h1 style="font-size: clamp(48px, 8vw, 96px); font-weight:700; margin:0; letter-spacing:-1.5px; line-height:1;">
+        GenView
+      </h1>
 
-  <!-- HERO -->
-<div style="height: 100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 24px;">
-  <div>
-    <h1 style="font-size: clamp(48px, 8vw, 96px); font-weight:700; margin:0; letter-spacing:-1.5px; line-height:1;">
-      GenView
-    </h1>
+      <div style="font-size: clamp(18px, 3vw, 32px); margin-top:12px;">
+        They'll decide your future.
+      </div>
 
-    <div style="font-size: clamp(18px, 3vw, 32px); margin-top:12px;">
-      They'll decide your future.
-    </div>
-
-    <div style="font-size: clamp(18px, 3vw, 32px); margin-top:6px; font-style:italic; color:rgba(0,0,0,0.75);">
-      Hear them first.
-    </div>
-  </div>
-</div>
-
-  <!-- STAT -->
-  <div class="block">
-    <div class="stat">
-      90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit.
-    </div>
-    <div class="source">(Dentsu UK, 2024)</div>
-  </div>
-
-  <!-- EMAIL -->
-  <div class="block">
-    <div class="email-title">Stay in touch</div>
-
-    <form id="email-form">
-      <input type="email" name="email" placeholder="Enter your email" required />
-      <button type="submit">Submit</button>
-    </form>
-
-    <div id="success-message">
-      Success. We’ll be in touch.
+      <div style="font-size: clamp(18px, 3vw, 32px); margin-top:6px; font-style:italic; color:rgba(0,0,0,0.75);">
+        Hear them first.
+      </div>
     </div>
   </div>
 
-</div>
+  <!-- CONTENT WRAP -->
+  <div class="wrap">
 
-<!-- FOOTER -->
-<div class="footer">
-  <span>Coming soon.</span>
-  <span class="dot">•</span>
+    <!-- STAT -->
+    <div class="block">
+      <div class="stat">
+        90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
+      </div>
+      <div class="source">(Dentsu UK, 2024)</div>
+    </div>
 
-  <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">
-    Luke Hall
-  </a>
+    <!-- EMAIL -->
+    <div class="block">
+      <div class="email-title">Stay in touch</div>
 
-  <span class="dot">•</span>
-  <span>GenView Group Ltd</span>
-</div>
+      <form id="email-form">
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="success-message" style="display:none; margin-top:18px;">
+        Success. We’ll be in touch.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Coming soon.</span>
+    <span class="dot">•</span>
+
+    <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">
+      Luke Hall
+    </a>
+
+    <span class="dot">•</span>
+    <span>GenView Group Ltd</span>
+  </div>
+
+</body>
 
 <!-- JS -->
 <script>
