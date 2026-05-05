@@ -19,17 +19,6 @@
       scroll-behavior: smooth;
     }
 
-    /* HERO = FULL SCREEN (KEY FIX) */
-    .hero {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 24px;
-    }
-
-    /* CONTENT WRAP FOR OTHER SECTIONS */
     .wrap {
       max-width: 900px;
       margin: 0 auto;
@@ -111,6 +100,14 @@
       opacity: 0.85;
     }
 
+    /* SUCCESS STATE */
+    #success-message {
+      display: none;
+      margin-top: 18px;
+      font-size: 16px;
+      color: rgba(0,0,0,0.75);
+    }
+
     /* FOOTER */
     .footer {
       position: fixed;
@@ -154,50 +151,83 @@
 
 <body>
 
-  <!-- HERO (FULL SCREEN) -->
-  <div class="hero">
-    <div>
-      <h1 class="title">GenView</h1>
-      <div class="subtitle">They'll decide your future.</div>
-      <div class="subtitle italic">Hear them first.</div>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="block">
+    <h1 class="title">GenView</h1>
+    <div class="subtitle">They'll decide your future.</div>
+    <div class="subtitle italic">Hear them first.</div>
+  </div>
+
+  <!-- STAT -->
+  <div class="block">
+    <div class="stat">
+      90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
+    </div>
+    <div class="source">(Dentsu UK, 2024)</div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="block">
+    <div class="email-title">Stay in touch</div>
+
+    <form id="email-form">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="success-message">
+      Success. We’ll be in touch.
     </div>
   </div>
 
-  <!-- CONTENT -->
-  <div class="wrap">
+</div>
 
-    <!-- STAT -->
-    <div class="block">
-      <div class="stat">
-        90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
-      </div>
-      <div class="source">(Dentsu UK, 2024)</div>
-    </div>
+<!-- FOOTER -->
+<div class="footer">
+  <span>Coming soon.</span>
+  <span class="dot">•</span>
 
-    <!-- EMAIL -->
-    <div class="block">
-      <div class="email-title">Stay in touch</div>
+  <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">
+    Luke Hall
+  </a>
 
-      <form action="https://script.google.com/macros/s/AKfycbxLXpxx1Ib8K0j611xkPsb6SK16qtBRJQiZUTUZYhJNglICAMiN0poqQSrjUpaE2N65/exec" method="POST" onsubmit="setTimeout(() => window.location.href='thank-you.html', 300)">
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+  <span class="dot">•</span>
+  <span>GenView Group Ltd</span>
+</div>
 
-  </div>
+<!-- JS -->
+<script>
+  const form = document.getElementById("email-form");
+  const success = document.getElementById("success-message");
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <span>Coming soon.</span>
-    <span class="dot">•</span>
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-    <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">
-      Luke Hall
-    </a>
+    const formData = new FormData(form);
 
-    <span class="dot">•</span>
-    <span>GenView Group Ltd</span>
-  </div>
+    try {
+      await fetch("YOUR_APPS_SCRIPT_URL_HERE", {
+        method: "POST",
+        body: formData
+      });
+
+      form.style.display = "none";
+      success.style.display = "block";
+
+      // optional: auto-reset after 5 seconds
+      setTimeout(() => {
+        form.style.display = "flex";
+        success.style.display = "none";
+        form.reset();
+      }, 5000);
+
+    } catch (err) {
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
 
 </body>
 </html>
