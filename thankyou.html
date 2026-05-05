@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GenView</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #adebb3;
+      font-family: 'League Spartan', sans-serif;
+      color: black;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .title {
+      font-size: clamp(44px, 8vw, 96px);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -1.5px;
+    }
+
+    .text {
+      margin-top: 16px;
+      font-size: clamp(18px, 3vw, 28px);
+      color: rgba(0,0,0,0.75);
+      line-height: 1.3;
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 30px;
+      font-size: 14px;
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+    }
+
+    .link:hover {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <div>
+      <h1 class="title">You're on the list.</h1>
+      <div class="text">
+        We’ll keep you updated on GenView.
+      </div>
+
+      <a class="link" href="/">Return</a>
+    </div>
+  </div>
+
+</body>
+</html>
