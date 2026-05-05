@@ -1,137 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <link rel="icon" type="image/png" href="/preview.png">
-  <!-- Open Graph (link preview) -->
-  <meta property="og:title" content="GenView" />
-  <meta property="og:description" content="They'll decide your future. Hear them first." />
-  <meta property="og:image" content="https://lukehallgenview.github.io/genview/preview.png" />
-  <meta property="og:type" content="website" />
-
-<!-- Twitter / X preview -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://lukehallgenview.github.io/genview/preview.png" />
-    <meta charset="UTF-8">
-    <title>GenView</title>
+  <meta charset="UTF-8">
+  <title>GenView — Hear them first</title>
 
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-  body {
-    margin: 0;
-    background-color: #adebb3;
-    color: black;
-    font-family: 'League Spartan', sans-serif;
-    text-align: center;
-    min-height: 100vh;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
-  }
+    body {
+      margin: 0;
+      background-color: #adebb3;
+      color: black;
+      font-family: 'League Spartan', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* Responsive centring (better than transform hack) */
-  .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -55%);
-    width: min(90vw, 800px);
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  .title {
-    font-size: clamp(44px, 8vw, 96px);
-    font-weight: 700;
-    margin: 0;
-    letter-spacing: -1.5px;
-    line-height: 1;
-  }
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
 
-  .subtitle {
-    font-size: clamp(18px, 3.5vw, 34px);
-    margin-top: 14px;
-    line-height: 1.25;
-    color: rgba(0, 0, 0, 0.85);
-  }
+    .title {
+      font-size: clamp(44px, 8vw, 96px);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
 
-  .italic {
-    font-style: italic;
-    margin-top: 6px;
-    color: rgba(0, 0, 0, 0.75);
-  }
+    .subtitle {
+      font-size: clamp(18px, 3.5vw, 34px);
+      margin-top: 14px;
+      color: rgba(0, 0, 0, 0.85);
+      line-height: 1.25;
+    }
 
-  /* Footer */
-  .footer {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 13px;
-    color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-    width: min(90vw, 800px);
-  }
+    .italic {
+      font-style: italic;
+      margin-top: 6px;
+      color: rgba(0, 0, 0, 0.75);
+    }
 
-  .footer-line {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    line-height: 1.2;
-  }
+    /* STAT SECTION */
+    .section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+    }
 
-  .dot {
-    opacity: 0.35;
-  }
+    .stat {
+      font-size: clamp(22px, 3.5vw, 42px);
+      max-width: 900px;
+      line-height: 1.25;
+      font-weight: 500;
+    }
 
-  .footer-link {
-    color: rgba(0, 0, 0, 0.75);
-    text-decoration: none;
-    position: relative;
-    font-weight: 500;
-  }
+    /* EMAIL SECTION */
+    .email-section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 0 24px;
+      text-align: center;
+    }
 
-  .footer-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 100%;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.75);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.2s ease;
-  }
+    .label {
+      font-size: 18px;
+      margin-bottom: 14px;
+      color: rgba(0, 0, 0, 0.75);
+    }
 
-  .footer-link:hover::after {
-    transform: scaleX(1);
-  }
-</style>
+    .email-box {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    input[type="email"] {
+      padding: 14px 16px;
+      font-size: 16px;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 8px;
+      outline: none;
+      width: 260px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    button {
+      padding: 14px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: black;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    /* Mobile polish */
+    @media (max-width: 600px) {
+      input[type="email"] {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <div class="content">
-    <h1 class="title">GenView</h1>
-    <div class="subtitle">They'll decide your future.</div>
-    <div class="subtitle italic">Hear them first.</div>
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h1 class="title">GenView</h1>
+      <div class="subtitle">They'll decide your future.</div>
+      <div class="subtitle italic">Hear them first.</div>
+    </div>
   </div>
 
-  <div class="footer">
-    <div class="footer-line">
-      <span>Coming soon.</span>
+  <!-- STAT -->
+  <div class="section">
+    <div class="stat">
+      90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
     </div>
+  </div>
 
-    <div class="footer-line">
-      <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">
-        Luke Hall
-      </a>
-      <span class="dot">•</span>
-      <span>GenView Group Ltd</span>
-    </div>
+  <!-- EMAIL -->
+  <div class="email-section">
+    <div class="label">Stay in touch</div>
+
+    <form class="email-box" action="https://script.google.com/macros/s/AKfycbzz1ccaJ6EBPutX4hRooBo5ij1YpCHYNHWd0Gf8xW7p22Ay2Q9exrdK_IwHEDp7ho6C/exec" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Join</button>
+    </form>
   </div>
 
 </body>
