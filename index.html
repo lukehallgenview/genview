@@ -19,7 +19,17 @@
       scroll-behavior: smooth;
     }
 
-    /* BALANCED CONTAINER */
+    /* HERO = FULL SCREEN (KEY FIX) */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    /* CONTENT WRAP FOR OTHER SECTIONS */
     .wrap {
       max-width: 900px;
       margin: 0 auto;
@@ -27,7 +37,6 @@
       text-align: center;
     }
 
-    /* MEDIUM SPACING (KEY CHANGE) */
     .block {
       margin-bottom: 140px;
     }
@@ -64,7 +73,6 @@
       color: rgba(0,0,0,0.55);
     }
 
-    /* EMAIL */
     .email-title {
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 700;
@@ -146,14 +154,17 @@
 
 <body>
 
-  <div class="wrap">
-
-    <!-- HERO -->
-    <div class="block">
+  <!-- HERO (FULL SCREEN) -->
+  <div class="hero">
+    <div>
       <h1 class="title">GenView</h1>
       <div class="subtitle">They'll decide your future.</div>
       <div class="subtitle italic">Hear them first.</div>
     </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="wrap">
 
     <!-- STAT -->
     <div class="block">
