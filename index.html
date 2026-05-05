@@ -10,27 +10,35 @@
     body {
       margin: 0;
       background-color: #adebb3;
-      color: black;
       font-family: 'League Spartan', sans-serif;
+      color: black;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     html {
       scroll-behavior: smooth;
     }
 
-    /* Shared section style */
-    section {
+    /* Sections */
+    .section {
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 0 24px;
+      position: relative;
+    }
+
+    /* PARALLAX LAYERS */
+    .parallax {
+      transform: translateY(0);
+      transition: transform 0.2s ease-out;
     }
 
     /* HERO */
-    .hero h1 {
+    .title {
       font-size: clamp(44px, 8vw, 96px);
       font-weight: 700;
       margin: 0;
@@ -38,16 +46,15 @@
       line-height: 1;
     }
 
-    .hero p {
+    .subtitle {
       font-size: clamp(18px, 3.2vw, 32px);
       margin-top: 12px;
       line-height: 1.2;
     }
 
-    .hero em {
-      display: block;
-      margin-top: 6px;
+    .italic {
       font-style: italic;
+      margin-top: 6px;
       color: rgba(0,0,0,0.75);
     }
 
@@ -60,17 +67,11 @@
     }
 
     /* EMAIL */
-    .email-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
     .email-title {
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 700;
       letter-spacing: -1px;
+      margin-bottom: 18px;
     }
 
     form {
@@ -104,28 +105,46 @@
       opacity: 0.85;
     }
 
-    /* subtle fade-in on scroll (progressive enhancement) */
-    section {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.8s ease forwards;
+    /* FIXED FOOTER (always visible) */
+    .footer {
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: rgba(0,0,0,0.6);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      white-space: nowrap;
+      z-index: 10;
     }
 
-    section:nth-child(1) { animation-delay: 0.1s; }
-    section:nth-child(2) { animation-delay: 0.2s; }
-    section:nth-child(3) { animation-delay: 0.3s; }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .dot {
+      opacity: 0.35;
     }
 
-    @media (max-width: 600px) {
-      input[type="email"] {
-        width: 100%;
-      }
+    .footer-link {
+      color: rgba(0,0,0,0.75);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .footer-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 1px;
+      background: rgba(0,0,0,0.75);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    .footer-link:hover::after {
+      transform: scaleX(1);
     }
   </style>
 </head>
@@ -133,24 +152,24 @@
 <body>
 
   <!-- HERO -->
-  <section class="hero">
+  <div class="section parallax" data-speed="0.2">
     <div>
-      <h1>GenView</h1>
-      <p>They'll decide your future.</p>
-      <em>Hear them first.</em>
+      <h1 class="title">GenView</h1>
+      <div class="subtitle">They'll decide your future.</div>
+      <div class="subtitle italic">Hear them first.</div>
     </div>
-  </section>
+  </div>
 
-  <!-- STORY / INSIGHT -->
-  <section>
+  <!-- STORY -->
+  <div class="section parallax" data-speed="0.4">
     <div class="story">
       90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
     </div>
-  </section>
+  </div>
 
   <!-- EMAIL -->
-  <section>
-    <div class="email-wrap">
+  <div class="section parallax" data-speed="0.6">
+    <div>
       <div class="email-title">Stay in touch</div>
 
       <form action="PASTE_YOUR_SCRIPT_URL_HERE" method="POST">
@@ -158,7 +177,33 @@
         <button type="submit">Submit</button>
       </form>
     </div>
-  </section>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Coming soon.</span>
+    <span class="dot">•</span>
+
+    <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">
+      Luke Hall
+    </a>
+
+    <span class="dot">•</span>
+    <span>GenView Group Ltd</span>
+  </div>
+
+  <!-- PARALLAX SCRIPT -->
+  <script>
+    window.addEventListener("scroll", function () {
+      const elements = document.querySelectorAll(".parallax");
+      const scrollY = window.pageYOffset;
+
+      elements.forEach(el => {
+        const speed = el.getAttribute("data-speed");
+        el.style.transform = `translateY(${scrollY * speed * -0.2}px)`;
+      });
+    });
+  </script>
 
 </body>
 </html>
