@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>GenView</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -15,53 +15,152 @@
       text-align: center;
       min-height: 100vh;
       position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
+    /* Main content centering */
     .content {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -55%);
+      animation: fadeIn 0.9s ease-out forwards;
+      opacity: 0;
     }
 
     .title {
-      font-size: 100px;
+      font-size: 96px;
       font-weight: 700;
       margin: 0;
+      letter-spacing: -1px;
+      line-height: 1;
     }
 
     .subtitle {
-      font-size: 36px;
-      margin-top: 20px;
+      font-size: 34px;
+      margin-top: 18px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: rgba(0, 0, 0, 0.85);
     }
 
     .italic {
       font-style: italic;
-      margin-top: 10px;
+      margin-top: 8px;
+      color: rgba(0, 0, 0, 0.75);
     }
 
+    /* Footer */
     .footer {
       position: absolute;
-      bottom: 18px;
+      bottom: 22px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 13px;
+      color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+
+      opacity: 0;
+      animation: fadeIn 1.2s ease-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    .footer-line {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      color: rgba(0, 0, 0, 0.65);
       white-space: nowrap;
+      line-height: 1.2;
     }
 
     .dot {
-      opacity: 0.4;
+      opacity: 0.35;
     }
 
     .footer-link {
       color: rgba(0, 0, 0, 0.75);
       text-decoration: none;
       position: relative;
+      font-weight: 500;
     }
+
+    /* Premium underline animation */
+    .footer-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.75);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.22s ease;
+    }
+
+    .footer-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -52%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -55%);
+      }
+    }
+
+    /* Keep footer stable (override transform animation drift) */
+    .footer {
+      animation-name: fadeInFooter;
+    }
+
+    @keyframes fadeInFooter {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="content">
+    <h1 class="title">GenView</h1>
+    <div class="subtitle">They'll decide your future.</div>
+    <div class="subtitle italic">Hear them first.</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-line">
+      <span>Coming soon.</span>
+    </div>
+
+    <div class="footer-line">
+      <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">
+        Luke Hall
+      </a>
+      <span class="dot">•</span>
+      <span>GenView Group Ltd</span>
+    </div>
+  </div>
+
+</body>
+</html>    }
 
     .footer-link::after {
       content: "";
