@@ -20,42 +20,28 @@
       scroll-behavior: smooth;
     }
 
-    /* BASE SECTIONS */
-    .section {
+    /* APPLE-STYLE FLOW */
+    .block {
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 0 24px;
-      position: relative;
-    }
-
-    /* DIFFERENT DEPTH LAYERS (TRUE PARALLAX FEEL) */
-    .hero {
-      background: transparent;
-    }
-
-    .story {
-      background: rgba(0,0,0,0.02);
-    }
-
-    .email {
-      background: rgba(0,0,0,0.03);
     }
 
     /* TYPOGRAPHY */
     .title {
-      font-size: clamp(44px, 8vw, 96px);
+      font-size: clamp(48px, 8vw, 100px);
       font-weight: 700;
       margin: 0;
-      letter-spacing: -1.5px;
+      letter-spacing: -1.6px;
       line-height: 1;
     }
 
     .subtitle {
-      font-size: clamp(18px, 3.2vw, 32px);
-      margin-top: 12px;
+      font-size: clamp(18px, 3.2vw, 34px);
+      margin-top: 14px;
       line-height: 1.2;
     }
 
@@ -65,8 +51,8 @@
       color: rgba(0,0,0,0.75);
     }
 
-    .story-text {
-      font-size: clamp(20px, 3.5vw, 42px);
+    .statement {
+      font-size: clamp(22px, 3.6vw, 44px);
       max-width: 900px;
       line-height: 1.25;
       font-weight: 500;
@@ -74,7 +60,7 @@
 
     /* EMAIL */
     .email-title {
-      font-size: clamp(28px, 4vw, 44px);
+      font-size: clamp(28px, 4vw, 48px);
       font-weight: 700;
       letter-spacing: -1px;
       margin-bottom: 18px;
@@ -91,7 +77,7 @@
       padding: 14px 16px;
       font-size: 16px;
       border: 1px solid rgba(0,0,0,0.2);
-      border-radius: 8px;
+      border-radius: 10px;
       width: 260px;
       background: rgba(255,255,255,0.35);
       outline: none;
@@ -101,7 +87,7 @@
       padding: 14px 18px;
       font-size: 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: black;
       color: white;
       cursor: pointer;
@@ -109,6 +95,24 @@
 
     button:hover {
       opacity: 0.85;
+    }
+
+    /* APPLE-LIKE FADE ON SCROLL */
+    .fade {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .fade.delay1 { animation-delay: 0.1s; }
+    .fade.delay2 { animation-delay: 0.2s; }
+    .fade.delay3 { animation-delay: 0.3s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* FIXED FOOTER */
@@ -156,24 +160,24 @@
 <body>
 
   <!-- HERO -->
-  <div class="section hero">
-    <div>
+  <div class="block">
+    <div class="fade delay1">
       <h1 class="title">GenView</h1>
       <div class="subtitle">They'll decide your future.</div>
       <div class="subtitle italic">Hear them first.</div>
     </div>
   </div>
 
-  <!-- STORY -->
-  <div class="section story">
-    <div class="story-text">
+  <!-- STAT -->
+  <div class="block">
+    <div class="statement fade delay2">
       90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
     </div>
   </div>
 
   <!-- EMAIL -->
-  <div class="section email">
-    <div>
+  <div class="block">
+    <div class="fade delay3">
       <div class="email-title">Stay in touch</div>
 
       <form action="PASTE_YOUR_SCRIPT_URL_HERE" method="POST">
