@@ -20,7 +20,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Sections */
+    /* BASE SECTIONS */
     .section {
       min-height: 100vh;
       display: flex;
@@ -31,13 +31,20 @@
       position: relative;
     }
 
-    /* PARALLAX LAYERS */
-    .parallax {
-      transform: translateY(0);
-      transition: transform 0.2s ease-out;
+    /* DIFFERENT DEPTH LAYERS (TRUE PARALLAX FEEL) */
+    .hero {
+      background: transparent;
     }
 
-    /* HERO */
+    .story {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .email {
+      background: rgba(0,0,0,0.03);
+    }
+
+    /* TYPOGRAPHY */
     .title {
       font-size: clamp(44px, 8vw, 96px);
       font-weight: 700;
@@ -58,8 +65,7 @@
       color: rgba(0,0,0,0.75);
     }
 
-    /* STORY */
-    .story {
+    .story-text {
       font-size: clamp(20px, 3.5vw, 42px);
       max-width: 900px;
       line-height: 1.25;
@@ -105,7 +111,7 @@
       opacity: 0.85;
     }
 
-    /* FIXED FOOTER (always visible) */
+    /* FIXED FOOTER */
     .footer {
       position: fixed;
       bottom: 14px;
@@ -120,9 +126,7 @@
       z-index: 10;
     }
 
-    .dot {
-      opacity: 0.35;
-    }
+    .dot { opacity: 0.35; }
 
     .footer-link {
       color: rgba(0,0,0,0.75);
@@ -152,7 +156,7 @@
 <body>
 
   <!-- HERO -->
-  <div class="section parallax" data-speed="0.2">
+  <div class="section hero">
     <div>
       <h1 class="title">GenView</h1>
       <div class="subtitle">They'll decide your future.</div>
@@ -161,14 +165,14 @@
   </div>
 
   <!-- STORY -->
-  <div class="section parallax" data-speed="0.4">
-    <div class="story">
+  <div class="section story">
+    <div class="story-text">
       90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
     </div>
   </div>
 
   <!-- EMAIL -->
-  <div class="section parallax" data-speed="0.6">
+  <div class="section email">
     <div>
       <div class="email-title">Stay in touch</div>
 
@@ -191,19 +195,6 @@
     <span class="dot">•</span>
     <span>GenView Group Ltd</span>
   </div>
-
-  <!-- PARALLAX SCRIPT -->
-  <script>
-    window.addEventListener("scroll", function () {
-      const elements = document.querySelectorAll(".parallax");
-      const scrollY = window.pageYOffset;
-
-      elements.forEach(el => {
-        const speed = el.getAttribute("data-speed");
-        el.style.transform = `translateY(${scrollY * speed * -0.2}px)`;
-      });
-    });
-  </script>
 
 </body>
 </html>
