@@ -9,12 +9,33 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Regular.otf') format('opentype');
+      font-weight: normal;
+    }
+
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Bold.otf') format('opentype');
+      font-weight: bold;
+    }
+
     body {
       margin: 0;
       background-color: #adebb3;
       font-family: 'League Spartan', sans-serif;
       color: black;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, font-family 0.1s;
+    }
+
+    body.dyslexic {
+      background-color: #f8f3e3;
+      font-family: 'OpenDyslexic', sans-serif;
+      letter-spacing: 0.05em;
+      word-spacing: 0.1em;
+      line-height: 1.6;
     }
 
     html {
@@ -30,26 +51,6 @@
 
     .block {
       margin-bottom: 140px;
-    }
-
-    .title {
-      font-size: clamp(48px, 8vw, 96px);
-      font-weight: 700;
-      margin: 0;
-      letter-spacing: -1.5px;
-      line-height: 1;
-    }
-
-    .subtitle {
-      font-size: clamp(18px, 3vw, 32px);
-      margin-top: 12px;
-      line-height: 1.2;
-    }
-
-    .italic {
-      font-style: italic;
-      margin-top: 6px;
-      color: rgba(0,0,0,0.75);
     }
 
     .stat {
@@ -86,6 +87,7 @@
       width: 260px;
       background: rgba(255,255,255,0.35);
       outline: none;
+      font-family: inherit;
     }
 
     button {
@@ -96,26 +98,11 @@
       background: black;
       color: white;
       cursor: pointer;
+      font-family: inherit;
     }
 
     button:hover {
       opacity: 0.85;
-    }
-
-    .accessible-link {
-      display: inline-block;
-      margin-top: 20px;
-      font-size: 13px;
-      color: rgba(0,0,0,0.6);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0,0,0,0.3);
-      padding-bottom: 1px;
-      transition: color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .accessible-link:hover {
-      color: rgba(0,0,0,0.9);
-      border-color: rgba(0,0,0,0.9);
     }
 
     /* SUCCESS STATE */
@@ -124,6 +111,34 @@
       margin-top: 18px;
       font-size: 16px;
       color: rgba(0,0,0,0.75);
+    }
+
+    /* DYSLEXIA TOGGLE BUTTON */
+    #dyslexia-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      border: 1px solid rgba(0,0,0,0.25);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      color: rgba(0,0,0,0.7);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    #dyslexia-toggle:hover {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.4);
+    }
+
+    body.dyslexic #dyslexia-toggle {
+      background: rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.35);
     }
 
     /* FOOTER */
@@ -182,7 +197,12 @@
 
 <body>
 
-  <!-- HERO (FULL SCREEN, NOT INSIDE WRAP) -->
+  <!-- DYSLEXIA TOGGLE -->
+  <button id="dyslexia-toggle" aria-pressed="false" title="Toggle dyslexia-friendly reading mode">
+    Aa
+  </button>
+
+  <!-- HERO -->
   <div style="height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 24px;">
     <div>
       <h1 style="font-size: clamp(48px, 8vw, 96px); font-weight:700; margin:0; letter-spacing:-1.5px; line-height:1;">
@@ -196,8 +216,6 @@
       <div style="font-size: clamp(18px, 3vw, 32px); margin-top:6px; font-style:italic; color:rgba(0,0,0,0.75);">
         Hear them first.
       </div>
-
-      <a href="accessible.html" class="accessible-link">Accessible version</a>
     </div>
   </div>
 
@@ -247,6 +265,7 @@
 
 <!-- JS -->
 <script>
+  // Email form
   const form = document.getElementById("email-form");
   const success = document.getElementById("success-message");
 
@@ -273,6 +292,24 @@
     } catch (err) {
       alert("Something went wrong. Please try again.");
     }
+  });
+
+  // Dyslexia toggle
+  const toggle = document.getElementById("dyslexia-toggle");
+  const body = document.body;
+
+  const saved = localStorage.getItem("dyslexic");
+  if (saved === "true") {
+    body.classList.add("dyslexic");
+    toggle.setAttribute("aria-pressed", "true");
+    toggle.title = "Turn off dyslexia-friendly mode";
+  }
+
+  toggle.addEventListener("click", function() {
+    const isOn = body.classList.toggle("dyslexic");
+    toggle.setAttribute("aria-pressed", isOn ? "true" : "false");
+    toggle.title = isOn ? "Turn off dyslexia-friendly mode" : "Toggle dyslexia-friendly reading mode";
+    localStorage.setItem("dyslexic", isOn);
   });
 </script>
 
