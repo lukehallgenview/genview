@@ -322,12 +322,17 @@
       </div>
     </div>
 
+    <!-- COMING SOON -->
+    <div class="block" style="margin-bottom: 80px;">
+      <div id="coming-soon-text" style="opacity:0; font-size: clamp(18px, 2.5vw, 28px); line-height:1.4; color:rgba(0,0,0,0.75); transition: opacity 1.2s ease;">
+        Gen Z has opinions.<br>Time you heard them.<br><em>Coming soon.</em>
+      </div>
+    </div>
+
   </div>
 
   <!-- FOOTER -->
   <div class="footer">
-    <span>Coming soon.</span>
-    <span class="dot">•</span>
     <a href="https://www.linkedin.com/company/112609480/" target="_blank" class="footer-link">LinkedIn</a>
     <span class="dot">•</span>
     <a href="https://www.instagram.com/genviewuk/" target="_blank" class="footer-link">Instagram</a>
@@ -371,6 +376,20 @@
       alert("Something went wrong. Please try again.");
     }
   });
+
+  // Fade in coming soon text 2s after it enters view
+  const comingSoon = document.getElementById("coming-soon-text");
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        setTimeout(function() {
+          comingSoon.style.opacity = "1";
+        }, 2000);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  observer.observe(comingSoon);
 
   // Hide scroll hint on scroll
   const scrollHint = document.getElementById("scroll-hint");
