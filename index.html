@@ -31,6 +31,17 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Regular.otf') format('opentype');
+      font-weight: normal;
+    }
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Bold.otf') format('opentype');
+      font-weight: bold;
+    }
+
     *, *::before, *::after { box-sizing: border-box; }
 
     body {
@@ -39,6 +50,43 @@
       font-family: 'League Spartan', sans-serif;
       color: black;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease;
+    }
+
+    body.dyslexic {
+      background-color: #f8f3e3;
+      font-family: 'OpenDyslexic', sans-serif;
+      letter-spacing: 0.05em;
+      word-spacing: 0.1em;
+      line-height: 1.6;
+    }
+
+    /* DYSLEXIA TOGGLE */
+    #dyslexia-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      border: 1px solid rgba(0,0,0,0.25);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      color: rgba(0,0,0,0.7);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    #dyslexia-toggle:hover {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.4);
+    }
+
+    body.dyslexic #dyslexia-toggle {
+      background: rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.35);
     }
 
     html { scroll-behavior: smooth; }
@@ -219,6 +267,9 @@
 </head>
 <body>
 
+  <!-- DYSLEXIA TOGGLE -->
+  <button id="dyslexia-toggle" aria-pressed="false" title="Toggle dyslexia-friendly reading mode">Aa</button>
+
   <!-- HERO -->
   <div class="hero">
     <h1>GenView</h1>
@@ -237,7 +288,7 @@
     <div class="tagline" id="tagline">
       Gen Z has opinions.<br>
       Time you heard them.<br>
-      <em>Coming soon.</em>
+      <em style="display:inline-block; margin-top: 18px;">Coming soon.</em>
     </div>
 
     <div class="email-section" id="email-section">
@@ -293,6 +344,18 @@
     } catch (err) {
       alert("Something went wrong. Please try again.");
     }
+  });
+
+  // Dyslexia toggle
+  const toggle = document.getElementById("dyslexia-toggle");
+  if (localStorage.getItem("dyslexic") === "true") {
+    document.body.classList.add("dyslexic");
+    toggle.setAttribute("aria-pressed", "true");
+  }
+  toggle.addEventListener("click", function() {
+    const isOn = document.body.classList.toggle("dyslexic");
+    toggle.setAttribute("aria-pressed", isOn ? "true" : "false");
+    localStorage.setItem("dyslexic", isOn);
   });
 
   // Fade in tagline 1s after it enters view, then email section 0.5s later
