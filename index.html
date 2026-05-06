@@ -163,6 +163,25 @@
       border-color: rgba(0,0,0,0.35);
     }
 
+    /* SCROLL PROMPT */
+    .scroll-hint {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      animation: bounce 2s infinite;
+      opacity: 0.4;
+    }
+
+    .scroll-hint svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
     /* FOOTER */
     .footer {
       position: fixed;
@@ -178,6 +197,25 @@
     }
 
     .dot { opacity: 0.35; }
+
+    @media (max-width: 600px) {
+      .footer {
+        gap: 8px;
+        font-size: 11px;
+        bottom: 10px;
+        white-space: normal;
+        justify-content: center;
+        width: 100%;
+        left: 0;
+        transform: none;
+        padding: 0 16px;
+        text-align: center;
+        flex-wrap: wrap;
+      }
+      .footer-hide-mobile {
+        display: none;
+      }
+    }
 
     .footer-link {
       color: rgba(0,0,0,0.75);
@@ -229,6 +267,12 @@
       <div style="font-size: clamp(14px, 1.6vw, 18px); margin-top:28px; max-width:560px; line-height:1.5; color:rgba(0,0,0,0.7);">
         Brands are guessing what Gen Z wants. We run co-design workshops with a standing panel of engaged young people – and turn their recommendations into strategy.
       </div>
+
+      <div class="scroll-hint" id="scroll-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
     </div>
   </div>
 
@@ -267,9 +311,9 @@
     <span class="dot">•</span>
     <a href="https://www.instagram.com/genviewuk/" target="_blank" class="footer-link">Instagram</a>
     <span class="dot">•</span>
-    <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link">Luke Hall</a>
-    <span class="dot">•</span>
-    <span>GenView Group Ltd</span>
+    <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link footer-hide-mobile">Luke Hall</a>
+    <span class="dot footer-hide-mobile">•</span>
+    <span class="footer-hide-mobile">GenView Group Ltd</span>
     <span class="dot">•</span>
     <a href="privacy.html" class="footer-link">Privacy Policy</a>
   </div>
@@ -306,6 +350,13 @@
       alert("Something went wrong. Please try again.");
     }
   });
+
+  // Hide scroll hint on scroll
+  const scrollHint = document.getElementById("scroll-hint");
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 40) scrollHint.style.opacity = "0";
+    else scrollHint.style.opacity = "0.4";
+  }, { passive: true });
 
   // Dyslexia toggle
   const toggle = document.getElementById("dyslexia-toggle");
