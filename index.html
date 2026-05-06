@@ -147,15 +147,19 @@
       letter-spacing: -1px;
       opacity: 0;
       transition: opacity 1.2s ease;
-      margin-bottom: 80px;
-    }
-
-    .tagline em {
-      font-style: italic;
-      color: rgba(0,0,0,0.65);
+      margin-bottom: 0;
     }
 
     .tagline.visible { opacity: 1; }
+
+    .coming-soon {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -1px;
+      color: rgba(0,0,0,0.65);
+      margin: 56px 0;
+    }
 
     .email-section {
       opacity: 0;
@@ -287,11 +291,11 @@
 
     <div class="tagline" id="tagline">
       Gen Z has opinions.<br>
-      Time you heard them.<br>
-      <em style="display:inline-block; margin-top: 18px;">Coming soon.</em>
+      Time you heard them.
     </div>
 
     <div class="email-section" id="email-section">
+      <p class="coming-soon">Coming soon.</p>
       <div class="email-title">Be first to know when we launch.</div>
 
       <form id="email-form">
