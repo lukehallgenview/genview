@@ -31,17 +31,7 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    @font-face {
-      font-family: 'OpenDyslexic';
-      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Regular.otf') format('opentype');
-      font-weight: normal;
-    }
-
-    @font-face {
-      font-family: 'OpenDyslexic';
-      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Bold.otf') format('opentype');
-      font-weight: bold;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -49,121 +39,30 @@
       font-family: 'League Spartan', sans-serif;
       color: black;
       -webkit-font-smoothing: antialiased;
-      transition: background-color 0.3s ease, font-family 0.1s;
     }
 
-    body.dyslexic {
-      background-color: #f8f3e3;
-      font-family: 'OpenDyslexic', sans-serif;
-      letter-spacing: 0.05em;
-      word-spacing: 0.1em;
-      line-height: 1.6;
-    }
+    html { scroll-behavior: smooth; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 120px 24px;
-      text-align: center;
-    }
-
-    .block {
-      margin-bottom: 140px;
-    }
-
-    .stat {
-      font-size: clamp(22px, 3.2vw, 40px);
-      line-height: 1.25;
-      font-weight: 500;
-    }
-
-    .source {
-      margin-top: 14px;
-      font-size: 12px;
-      color: rgba(0,0,0,0.55);
-    }
-
-    .email-title {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 700;
-      margin-bottom: 18px;
-      letter-spacing: -1px;
-    }
-
-    form {
+    /* HERO */
+    .hero {
+      height: 100vh;
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      text-align: center;
+      padding: 0 24px;
     }
 
-    input[type="email"] {
-      padding: 14px 16px;
-      font-size: 16px;
-      border: 1px solid rgba(0,0,0,0.2);
-      border-radius: 10px;
-      width: 260px;
-      background: rgba(255,255,255,0.35);
-      outline: none;
-      font-family: inherit;
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -1.5px;
+      line-height: 1;
     }
 
-    button {
-      padding: 14px 18px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      background: black;
-      color: white;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    button:hover {
-      opacity: 0.85;
-    }
-
-    /* SUCCESS STATE */
-    #success-message {
-      display: none;
-      margin-top: 18px;
-      font-size: 16px;
-      color: rgba(0,0,0,0.75);
-    }
-
-    /* DYSLEXIA TOGGLE BUTTON */
-    #dyslexia-toggle {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      padding: 8px 14px;
-      font-size: 13px;
-      font-family: inherit;
-      border: 1px solid rgba(0,0,0,0.25);
-      border-radius: 20px;
-      background: rgba(255,255,255,0.5);
-      color: rgba(0,0,0,0.7);
-      cursor: pointer;
-      backdrop-filter: blur(6px);
-      z-index: 100;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-
-    #dyslexia-toggle:hover {
-      background: rgba(255,255,255,0.8);
-      border-color: rgba(0,0,0,0.4);
-    }
-
-    body.dyslexic #dyslexia-toggle {
-      background: rgba(0,0,0,0.08);
-      border-color: rgba(0,0,0,0.35);
-    }
-
-    /* SCROLL PROMPT */
+    /* SCROLL ARROW */
     .scroll-hint {
       margin: 40px auto 0;
       display: flex;
@@ -178,30 +77,84 @@
       transition: opacity 0.3s ease;
     }
 
-    .scroll-hint svg {
-      width: 24px;
-      height: 24px;
-    }
+    .scroll-hint svg { width: 24px; height: 24px; }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
+      50%       { transform: translateY(6px); }
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* CONTENT */
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 24px 140px;
+      text-align: center;
     }
 
-    .fade-up {
+    .tagline {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -1px;
       opacity: 0;
-      animation: fadeUp 1.2s ease forwards;
+      transition: opacity 1.2s ease;
+      margin-bottom: 80px;
     }
 
-    .fade-up-1 { animation-delay: 0.4s; }
-    .fade-up-2 { animation-delay: 1.3s; }
-    .fade-up-3 { animation-delay: 3.0s; }
-    .fade-up-4 { animation-delay: 3.7s; }
+    .tagline em {
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(0,0,0,0.65);
+    }
+
+    .tagline.visible { opacity: 1; }
+
+    /* EMAIL */
+    .email-title {
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    input[type="email"] {
+      padding: 14px 16px;
+      font-size: 16px;
+      font-family: inherit;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 10px;
+      width: 260px;
+      background: rgba(255,255,255,0.35);
+      outline: none;
+    }
+
+    button[type="submit"] {
+      padding: 14px 18px;
+      font-size: 16px;
+      font-family: inherit;
+      border: none;
+      border-radius: 10px;
+      background: black;
+      color: white;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover { opacity: 0.85; }
+
+    #success-message {
+      display: none;
+      margin-top: 18px;
+      font-size: 16px;
+      color: rgba(0,0,0,0.75);
+    }
 
     /* FOOTER */
     .footer {
@@ -218,25 +171,6 @@
     }
 
     .dot { opacity: 0.35; }
-
-    @media (max-width: 600px) {
-      .footer {
-        gap: 8px;
-        font-size: 11px;
-        bottom: 10px;
-        white-space: normal;
-        justify-content: center;
-        width: 100%;
-        left: 0;
-        transform: none;
-        padding: 0 16px;
-        text-align: center;
-        flex-wrap: wrap;
-      }
-      .footer-hide-mobile {
-        display: none;
-      }
-    }
 
     .footer-link {
       color: rgba(0,0,0,0.75);
@@ -257,76 +191,58 @@
       transition: transform 0.2s ease;
     }
 
-    .footer-link:hover::after {
-      transform: scaleX(1);
+    .footer-link:hover::after { transform: scaleX(1); }
+
+    @media (max-width: 600px) {
+      .footer {
+        gap: 8px;
+        font-size: 11px;
+        bottom: 10px;
+        white-space: normal;
+        justify-content: center;
+        width: 100%;
+        left: 0;
+        transform: none;
+        padding: 0 16px;
+        text-align: center;
+        flex-wrap: wrap;
+      }
+      .footer-hide-mobile { display: none; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- DYSLEXIA TOGGLE -->
-  <button id="dyslexia-toggle" aria-pressed="false" title="Toggle dyslexia-friendly reading mode">
-    Aa
-  </button>
-
   <!-- HERO -->
-  <div style="height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 24px;">
-    <div>
-      <h1 style="font-size: clamp(48px, 8vw, 96px); font-weight:700; margin:0; letter-spacing:-1.5px; line-height:1;">
-        GenView
-      </h1>
-
-      <div class="fade-up fade-up-1" style="font-size: clamp(18px, 3vw, 32px); margin-top:12px;">
-        They'll decide your future.
-      </div>
-
-      <div class="fade-up fade-up-2" style="font-size: clamp(18px, 3vw, 32px); margin-top:6px; font-style:italic; color:rgba(0,0,0,0.75);">
-        Hear them first.
-      </div>
-
-      <div class="fade-up fade-up-3" style="font-size: clamp(14px, 1.6vw, 18px); margin-top:28px; max-width:560px; line-height:1.5; color:rgba(0,0,0,0.7);">
-        Brands are guessing what Gen Z wants. We run co-design workshops with a standing panel of engaged young people – and turn their recommendations into strategy.
-      </div>
-
-      <button class="scroll-hint fade-up fade-up-4" id="scroll-hint" aria-label="Scroll down" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
-    </div>
+  <div class="hero">
+    <h1>GenView</h1>
+    <button class="scroll-hint" id="scroll-hint" aria-label="Scroll down"
+      onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
   </div>
 
-  <!-- CONTENT WRAP -->
+  <!-- CONTENT -->
   <div class="wrap">
 
-    <!-- STAT -->
-    <div class="block">
-      <div class="stat">
-        90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit
-      </div>
-      <div class="source">(Dentsu UK, 2024)</div>
+    <div class="tagline" id="tagline">
+      Gen Z has opinions.<br>
+      Time you heard them.<br>
+      <em>Coming soon.</em>
     </div>
 
-    <!-- EMAIL -->
-    <div class="block">
-      <div class="email-title">Be first to know.</div>
+    <div class="email-title">Be first to know when we launch.</div>
 
-      <form id="email-form">
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit">Submit</button>
-      </form>
+    <form id="email-form">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Submit</button>
+    </form>
 
-      <div id="success-message" style="display:none; margin-top:18px;">
-        Success. We'll be in touch.
-      </div>
-    </div>
-
-    <!-- COMING SOON -->
-    <div class="block" style="margin-bottom: 80px;">
-      <div id="coming-soon-text" style="opacity:0; font-size: clamp(18px, 2.5vw, 28px); line-height:1.4; color:rgba(0,0,0,0.75); transition: opacity 1.2s ease;">
-        Gen Z has opinions.<br>Time you heard them.<br><em>Coming soon.</em>
-      </div>
+    <div id="success-message">
+      Success. We'll be in touch.
     </div>
 
   </div>
@@ -336,7 +252,7 @@
     <a href="https://www.linkedin.com/company/112609480/" target="_blank" class="footer-link">LinkedIn</a>
     <span class="dot">•</span>
     <a href="https://www.instagram.com/genviewuk/" target="_blank" class="footer-link">Instagram</a>
-    <span class="dot">•</span>
+    <span class="dot footer-hide-mobile">•</span>
     <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link footer-hide-mobile">Luke Hall</a>
     <span class="dot footer-hide-mobile">•</span>
     <span class="footer-hide-mobile">GenView Group Ltd</span>
@@ -346,7 +262,6 @@
 
 </body>
 
-<!-- JS -->
 <script>
   // Email form
   const form = document.getElementById("email-form");
@@ -354,67 +269,43 @@
 
   form.addEventListener("submit", async function(e) {
     e.preventDefault();
-
     const formData = new FormData(form);
-
     try {
       await fetch("https://script.google.com/macros/s/AKfycbzDudrRu-pavjB2wUZoiA74tYOiGO6beJxW8PdrT1XGftuunpHVInuLeJJnONl7N21m/exec", {
         method: "POST",
         body: formData
       });
-
       form.style.display = "none";
       success.style.display = "block";
-
       setTimeout(() => {
         form.style.display = "flex";
         success.style.display = "none";
         form.reset();
       }, 5000);
-
     } catch (err) {
       alert("Something went wrong. Please try again.");
     }
   });
 
-  // Fade in coming soon text 2s after it enters view
-  const comingSoon = document.getElementById("coming-soon-text");
+  // Fade in tagline 1s after it enters view
+  const tagline = document.getElementById("tagline");
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         setTimeout(function() {
-          comingSoon.style.opacity = "1";
-        }, 2000);
+          tagline.classList.add("visible");
+        }, 1000);
         observer.disconnect();
       }
     });
-  }, { threshold: 0.5 });
-  observer.observe(comingSoon);
+  }, { threshold: 0.3 });
+  observer.observe(tagline);
 
   // Hide scroll hint on scroll
   const scrollHint = document.getElementById("scroll-hint");
   window.addEventListener("scroll", function() {
-    if (window.scrollY > 40) scrollHint.style.opacity = "0";
-    else scrollHint.style.opacity = "0.4";
+    scrollHint.style.opacity = window.scrollY > 40 ? "0" : "0.4";
   }, { passive: true });
-
-  // Dyslexia toggle
-  const toggle = document.getElementById("dyslexia-toggle");
-  const body = document.body;
-
-  const saved = localStorage.getItem("dyslexic");
-  if (saved === "true") {
-    body.classList.add("dyslexic");
-    toggle.setAttribute("aria-pressed", "true");
-    toggle.title = "Turn off dyslexia-friendly mode";
-  }
-
-  toggle.addEventListener("click", function() {
-    const isOn = body.classList.toggle("dyslexic");
-    toggle.setAttribute("aria-pressed", isOn ? "true" : "false");
-    toggle.title = isOn ? "Turn off dyslexia-friendly mode" : "Toggle dyslexia-friendly reading mode";
-    localStorage.setItem("dyslexic", isOn);
-  });
 </script>
 
 </body>
