@@ -100,6 +100,22 @@
       opacity: 0.85;
     }
 
+    .accessible-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.3);
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .accessible-link:hover {
+      color: rgba(0,0,0,0.9);
+      border-color: rgba(0,0,0,0.9);
+    }
+
     /* SUCCESS STATE */
     #success-message {
       display: none;
@@ -161,7 +177,7 @@
 <meta name="twitter:title" content="GenView" />
 <meta name="twitter:description" content="They'll decide your future. Hear them first." />
 <meta name="twitter:image" content="https://lukehallgenview.github.io/genview/preview.jpg" />
-  
+
 <body>
 
   <!-- HERO (FULL SCREEN, NOT INSIDE WRAP) -->
@@ -178,6 +194,8 @@
       <div style="font-size: clamp(18px, 3vw, 32px); margin-top:6px; font-style:italic; color:rgba(0,0,0,0.75);">
         Hear them first.
       </div>
+
+      <a href="accessible.html" class="accessible-link">Accessible version</a>
     </div>
   </div>
 
@@ -202,7 +220,7 @@
       </form>
 
       <div id="success-message" style="display:none; margin-top:18px;">
-        Success. We’ll be in touch.
+        Success. We'll be in touch.
       </div>
     </div>
 
@@ -242,7 +260,6 @@
       form.style.display = "none";
       success.style.display = "block";
 
-      // optional: auto-reset after 5 seconds
       setTimeout(() => {
         form.style.display = "flex";
         success.style.display = "none";
