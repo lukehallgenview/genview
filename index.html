@@ -159,7 +159,11 @@
       letter-spacing: -1px;
       color: rgba(0,0,0,0.65);
       margin: 56px 0;
+      opacity: 0;
+      transition: opacity 1.2s ease;
     }
+
+    .coming-soon.visible { opacity: 1; }
 
     .email-section {
       opacity: 0;
@@ -294,8 +298,9 @@
       Time you heard them.
     </div>
 
+    <p class="coming-soon" id="coming-soon">Coming soon.</p>
+
     <div class="email-section" id="email-section">
-      <p class="coming-soon">Coming soon.</p>
       <div class="email-title">Be first to know when we launch.</div>
 
       <form id="email-form">
@@ -362,8 +367,9 @@
     localStorage.setItem("dyslexic", isOn);
   });
 
-  // Fade in tagline 1s after it enters view, then email section 0.5s later
+  // Fade in: tagline → coming soon → email section
   const tagline = document.getElementById("tagline");
+  const comingSoon = document.getElementById("coming-soon");
   const emailSection = document.getElementById("email-section");
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -371,7 +377,10 @@
         setTimeout(function() {
           tagline.classList.add("visible");
           setTimeout(function() {
-            emailSection.classList.add("visible");
+            comingSoon.classList.add("visible");
+            setTimeout(function() {
+              emailSection.classList.add("visible");
+            }, 700);
           }, 500);
         }, 1000);
         observer.disconnect();
