@@ -170,6 +170,11 @@
       justify-content: center;
       animation: bounce 2s infinite;
       opacity: 0.4;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity 0.3s ease;
     }
 
     .scroll-hint svg {
@@ -268,11 +273,11 @@
         Brands are guessing what Gen Z wants. We run co-design workshops with a standing panel of engaged young people – and turn their recommendations into strategy.
       </div>
 
-      <div class="scroll-hint" id="scroll-hint" aria-hidden="true">
+      <button class="scroll-hint" id="scroll-hint" aria-label="Scroll down" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
-      </div>
+      </button>
     </div>
   </div>
 
