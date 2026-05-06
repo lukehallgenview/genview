@@ -94,7 +94,7 @@
 
     .tagline {
       font-size: clamp(28px, 4vw, 52px);
-      font-weight: 700;
+      font-weight: 400;
       line-height: 1.2;
       letter-spacing: -1px;
       opacity: 0;
@@ -103,12 +103,18 @@
     }
 
     .tagline em {
-      font-weight: 400;
       font-style: italic;
       color: rgba(0,0,0,0.65);
     }
 
     .tagline.visible { opacity: 1; }
+
+    .email-section {
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    .email-section.visible { opacity: 1; }
 
     /* EMAIL */
     .email-title {
@@ -234,15 +240,17 @@
       <em>Coming soon.</em>
     </div>
 
-    <div class="email-title">Be first to know when we launch.</div>
+    <div class="email-section" id="email-section">
+      <div class="email-title">Be first to know when we launch.</div>
 
-    <form id="email-form">
-      <input type="email" name="email" placeholder="Enter your email" required />
-      <button type="submit">Submit</button>
-    </form>
+      <form id="email-form">
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Submit</button>
+      </form>
 
-    <div id="success-message">
-      Success. We'll be in touch.
+      <div id="success-message">
+        Success. We'll be in touch.
+      </div>
     </div>
 
   </div>
@@ -287,13 +295,17 @@
     }
   });
 
-  // Fade in tagline 1s after it enters view
+  // Fade in tagline 1s after it enters view, then email section 0.5s later
   const tagline = document.getElementById("tagline");
+  const emailSection = document.getElementById("email-section");
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         setTimeout(function() {
           tagline.classList.add("visible");
+          setTimeout(function() {
+            emailSection.classList.add("visible");
+          }, 500);
         }, 1000);
         observer.disconnect();
       }
