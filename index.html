@@ -188,6 +188,21 @@
       50% { transform: translateY(6px); }
     }
 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .fade-up-1 { animation-delay: 0.2s; }
+    .fade-up-2 { animation-delay: 0.5s; }
+    .fade-up-3 { animation-delay: 0.85s; }
+    .fade-up-4 { animation-delay: 1.2s; }
+
     /* FOOTER */
     .footer {
       position: fixed;
@@ -262,19 +277,19 @@
         GenView
       </h1>
 
-      <div style="font-size: clamp(18px, 3vw, 32px); margin-top:12px;">
+      <div class="fade-up fade-up-1" style="font-size: clamp(18px, 3vw, 32px); margin-top:12px;">
         They'll decide your future.
       </div>
 
-      <div style="font-size: clamp(18px, 3vw, 32px); margin-top:6px; font-style:italic; color:rgba(0,0,0,0.75);">
+      <div class="fade-up fade-up-2" style="font-size: clamp(18px, 3vw, 32px); margin-top:6px; font-style:italic; color:rgba(0,0,0,0.75);">
         Hear them first.
       </div>
 
-      <div style="font-size: clamp(14px, 1.6vw, 18px); margin-top:28px; max-width:560px; line-height:1.5; color:rgba(0,0,0,0.7);">
+      <div class="fade-up fade-up-3" style="font-size: clamp(14px, 1.6vw, 18px); margin-top:28px; max-width:560px; line-height:1.5; color:rgba(0,0,0,0.7);">
         Brands are guessing what Gen Z wants. We run co-design workshops with a standing panel of engaged young people – and turn their recommendations into strategy.
       </div>
 
-      <button class="scroll-hint" id="scroll-hint" aria-label="Scroll down" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+      <button class="scroll-hint fade-up fade-up-4" id="scroll-hint" aria-label="Scroll down" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
