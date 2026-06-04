@@ -8,12 +8,12 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="preview.png">
 
-  <meta name="description" content="Strategy rooted in rich insights from Gen Z. Before anyone else." />
+  <meta name="description" content="Gen Z insight and strategy for organisations that mean it." />
   <link rel="canonical" href="https://genview.uk/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="GenView" />
-  <meta property="og:description" content="Strategy rooted in rich insights from Gen Z. Before anyone else." />
+  <meta property="og:description" content="Gen Z insight and strategy for organisations that mean it." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genview.uk/" />
   <meta property="og:image" content="https://genview.uk/preview.png" />
@@ -23,7 +23,7 @@
   <!-- Twitter / WhatsApp -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="GenView" />
-  <meta name="twitter:description" content="Strategy rooted in rich insights from Gen Z. Before anyone else." />
+  <meta name="twitter:description" content="Gen Z insight and strategy for organisations that mean it." />
   <meta name="twitter:image" content="https://genview.uk/preview.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,12 +102,37 @@
       padding: 0 24px;
     }
 
+    .hero-brand {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+
     .hero h1 {
-      font-size: clamp(48px, 8vw, 96px);
+      font-size: clamp(40px, 6.5vw, 82px);
       font-weight: 700;
       margin: 0;
       letter-spacing: -1.5px;
-      line-height: 1;
+      line-height: 1.05;
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.8vw, 20px);
+      line-height: 1.55;
+      max-width: 620px;
+      margin-top: 28px;
+      color: rgba(0,0,0,0.75);
+      font-weight: 400;
+    }
+
+    .hero-tagline {
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-style: italic;
+      margin-top: 18px;
+      color: rgba(0,0,0,0.55);
     }
 
     /* SCROLL ARROW */
@@ -136,48 +161,88 @@
     .wrap {
       max-width: 900px;
       margin: 0 auto;
-      padding: 100px 24px 140px;
+      padding: 100px 24px 160px;
       text-align: center;
     }
 
-    .tagline {
-      font-size: clamp(28px, 4vw, 52px);
+    .block {
+      margin-bottom: 120px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 28px;
+    }
+
+    .section-body {
+      font-size: clamp(20px, 2.6vw, 32px);
+      line-height: 1.4;
       font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: -1px;
-      opacity: 0;
-      transition: opacity 1.2s ease;
-      margin-bottom: 0;
+      max-width: 760px;
+      margin: 0 auto;
     }
 
-    .tagline.visible { opacity: 1; }
+    .section-body p { margin: 0 0 20px; }
+    .section-body p:last-child { margin-bottom: 0; }
 
-    .coming-soon {
-      font-size: clamp(28px, 4vw, 52px);
-      font-weight: 400;
-      font-style: italic;
-      letter-spacing: -1px;
-      color: rgba(0,0,0,0.65);
-      margin: 56px 0;
-      opacity: 0;
-      transition: opacity 1.2s ease;
+    .stat {
+      font-size: clamp(22px, 3.2vw, 40px);
+      line-height: 1.25;
+      font-weight: 500;
     }
 
-    .coming-soon.visible { opacity: 1; }
-
-    .email-section {
-      opacity: 0;
-      transition: opacity 1.2s ease;
+    .stat + .stat {
+      margin-top: 40px;
     }
 
-    .email-section.visible { opacity: 1; }
+    .source {
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(0,0,0,0.55);
+    }
 
     /* EMAIL */
     .email-title {
       font-size: clamp(22px, 3vw, 36px);
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       letter-spacing: -0.5px;
+    }
+
+    .email-sub {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: rgba(0,0,0,0.65);
+      margin-bottom: 28px;
+    }
+
+    .cta-contact {
+      margin-bottom: 32px;
+    }
+
+    .cta-contact a {
+      display: inline-block;
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 600;
+      color: black;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(0,0,0,0.25);
+      padding-bottom: 2px;
+      margin: 6px 16px;
+      transition: border-color 0.2s ease;
+    }
+
+    .cta-contact a:hover {
+      border-color: black;
+    }
+
+    .cta-divider {
+      font-size: 13px;
+      color: rgba(0,0,0,0.4);
+      margin: 32px 0;
     }
 
     form {
@@ -280,7 +345,10 @@
 
   <!-- HERO -->
   <div class="hero">
-    <h1>GenView</h1>
+    <div class="hero-brand">GenView</div>
+    <h1>Gen Z has opinions.<br>Time you heard them.</h1>
+    <p class="hero-sub">GenView gives brands and organisations the Gen Z insight they can't get from surveys. Grounded in the policy shifts, cultural movements, and lived experiences actually shaping how young people think.</p>
+    <p class="hero-tagline">Gen Z insight and strategy for organisations that mean it.</p>
     <button class="scroll-hint" id="scroll-hint" aria-label="Scroll down"
       onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -293,15 +361,52 @@
   <!-- CONTENT -->
   <div class="wrap">
 
-    <div class="tagline" id="tagline">
-      Gen Z has opinions.<br>
-      Time you heard them.
+    <!-- WHAT WE DO -->
+    <div class="block">
+      <div class="section-label">What we do</div>
+      <div class="section-body">
+        <p>GenView is structurally different from anything else in the market. We run a standing panel of paid, committed Gen Z participants – and use in-depth qualitative research, not mass surveys, to get to the bottom of how young people actually think, feel, and consume.</p>
+        <p>Most research tells you what young people say. We tell you why, and what's coming next.</p>
+      </div>
     </div>
 
-    <p class="coming-soon" id="coming-soon">Coming soon.</p>
+    <!-- WHY IT MATTERS -->
+    <div class="block">
+      <div class="section-label">Why it matters</div>
+      <div class="stat">90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit.</div>
+      <div class="source">(Dentsu UK, 2024)</div>
+      <div class="stat" style="margin-top: 40px;">The UK Government co-produced its National Youth Strategy directly with young people for the first time in history. Accountability to Gen Z is now government policy – and a growing expectation of business.</div>
+    </div>
 
-    <div class="email-section" id="email-section">
-      <div class="email-title">Be first to know when we launch.</div>
+    <!-- WHO WE WORK WITH -->
+    <div class="block">
+      <div class="section-label">Who we work with</div>
+      <div class="section-body">
+        <p>We work with brands, organisations, and marketing teams across any sector where getting Gen Z right is non-negotiable. From FMCG to financial services, tech to entertainment – anyone who can't afford to get young people wrong.</p>
+        <p>We also work with charities, foundations, and policy teams who need to understand and authentically engage with young people.</p>
+      </div>
+    </div>
+
+    <!-- WHY GENVIEW -->
+    <div class="block">
+      <div class="section-label">Why GenView</div>
+      <div class="section-body">
+        <p>Most Gen Z insight comes from the outside looking in. GenView's founder has spent years embedded in the policy, advocacy, and institutional worlds that actually shape how young people live – from policymakers in the House of Commons to speaking at international fora such as UNICEF and consumer business summits. That's a different kind of intelligence.</p>
+        <p>The combination no competitor has built: a standing panel, in-depth co-design, and a closed loop with every young person involved – making the research richer, the data more honest, and the insight more reliable.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="block">
+      <div class="email-title">Ready to understand Gen Z?</div>
+      <div class="email-sub">Get in touch to talk about what GenView can do for your team.</div>
+
+      <div class="cta-contact">
+        <a href="mailto:hello@genview.uk">hello@genview.uk</a>
+        <a href="mailto:hello@genview.uk?subject=GenView Enquiry">Contact us →</a>
+      </div>
+
+      <div class="cta-divider">Or sign up to receive GenView's insights direct to your inbox.</div>
 
       <form id="email-form">
         <input type="email" name="email" placeholder="Enter your email" required />
@@ -364,28 +469,6 @@
     toggle.setAttribute("aria-pressed", isOn ? "true" : "false");
     localStorage.setItem("dyslexic", isOn);
   });
-
-  // Fade in: tagline → coming soon → email section
-  const tagline = document.getElementById("tagline");
-  const comingSoon = document.getElementById("coming-soon");
-  const emailSection = document.getElementById("email-section");
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        setTimeout(function() {
-          tagline.classList.add("visible");
-          setTimeout(function() {
-            comingSoon.classList.add("visible");
-            setTimeout(function() {
-              emailSection.classList.add("visible");
-            }, 700);
-          }, 500);
-        }, 1000);
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-  observer.observe(tagline);
 
   // Hide scroll hint on scroll
   const scrollHint = document.getElementById("scroll-hint");
