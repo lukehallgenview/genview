@@ -370,6 +370,11 @@
       gap: 10px;
       align-items: center;
       white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link {
+      transition: color 0.3s ease;
     }
 
     .dot { opacity: 0.35; }
@@ -535,6 +540,24 @@
 
   submitForm("form-org", "success-org");
   submitForm("form-panel", "success-panel");
+
+  // Footer turns white over black 18-25 section
+  const footer = document.querySelector('.footer');
+  const genzSection = document.querySelector('.genz-section');
+
+  const footerObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        footer.style.color = 'rgba(255,255,255,0.7)';
+        footer.querySelectorAll('.footer-link').forEach(a => a.style.color = 'rgba(255,255,255,0.9)');
+      } else {
+        footer.style.color = 'rgba(0,0,0,0.6)';
+        footer.querySelectorAll('.footer-link').forEach(a => a.style.color = 'rgba(0,0,0,0.75)');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  footerObserver.observe(genzSection);
 
   function togglePanel(id) {
     const panel = document.getElementById(id);
