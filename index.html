@@ -472,8 +472,8 @@
   </div>
 
   <!-- STAT -->
-  <div style="text-align: center; padding: 100px 24px; max-width: 800px; margin: 0 auto;">
-    <div style="font-size: clamp(28px, 4.5vw, 58px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px;">90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit.</div>
+  <div id="stat-section" style="text-align: center; padding: 160px 24px; max-width: 780px; margin: 0 auto; opacity: 0; transition: opacity 1.4s ease;">
+    <div style="font-size: clamp(28px, 4.5vw, 58px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px;">90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit.</div>
     <div style="font-size: 13px; color: rgba(0,0,0,0.45);">Dentsu UK, 2024</div>
   </div>
 
@@ -626,6 +626,18 @@
 
   // Footer turns white over black 18-25 section
   const footer = document.querySelector('.footer');
+  // Fade in stat when it enters view
+  const statSection = document.getElementById("stat-section");
+  const statObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        statSection.style.opacity = "1";
+        statObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  statObserver.observe(statSection);
+
   const genzSection = document.querySelector('.genz-section');
 
   const footerObserver = new IntersectionObserver(function(entries) {
