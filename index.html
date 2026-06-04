@@ -27,8 +27,9 @@
   <meta name="twitter:image" content="https://genview.uk/preview.png" />
 
   <link rel="stylesheet" href="fonts/leaguespartan.css">
-
   <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
     @font-face {
       font-family: 'OpenDyslexic';
       src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Regular.otf') format('opentype');
@@ -39,8 +40,6 @@
       src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Bold.otf') format('opentype');
       font-weight: bold;
     }
-
-    *, *::before, *::after { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -59,7 +58,6 @@
       line-height: 1.6;
     }
 
-    /* DYSLEXIA TOGGLE */
     #dyslexia-toggle {
       position: fixed;
       top: 16px;
@@ -101,12 +99,10 @@
     }
 
     .hero-brand {
-      font-size: 13px;
+      font-size: clamp(22px, 3vw, 32px);
       font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.5;
-      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
     }
 
     .hero h1 {
@@ -117,23 +113,6 @@
       line-height: 1.05;
     }
 
-    .hero-sub {
-      font-size: clamp(15px, 1.8vw, 20px);
-      line-height: 1.55;
-      max-width: 620px;
-      margin-top: 28px;
-      color: rgba(0,0,0,0.75);
-      font-weight: 400;
-    }
-
-    .hero-tagline {
-      font-size: clamp(13px, 1.4vw, 16px);
-      font-style: italic;
-      margin-top: 18px;
-      color: rgba(0,0,0,0.55);
-    }
-
-    /* SCROLL ARROW */
     .scroll-hint {
       margin: 40px auto 0;
       display: flex;
@@ -145,7 +124,6 @@
       cursor: pointer;
       padding: 0;
       color: black;
-      transition: opacity 0.3s ease;
     }
 
     .scroll-hint svg { width: 24px; height: 24px; }
@@ -155,56 +133,166 @@
       50%       { transform: translateY(6px); }
     }
 
-    /* CONTENT */
+    /* PANELS */
     .wrap {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 100px 24px 160px;
-      text-align: center;
+      padding: 40px 24px 120px;
     }
 
-    .block {
-      margin-bottom: 120px;
+    .panel {
+      border-top: 1px solid rgba(0,0,0,0.2);
     }
 
-    .section-label {
-      font-size: 11px;
+    .panel:last-of-type {
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .panel-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: inherit;
+      text-align: left;
+      gap: 16px;
+      transition: opacity 0.15s ease;
+    }
+
+    .panel-trigger:hover { opacity: 0.7; }
+
+    .panel-trigger-label {
+      font-size: clamp(17px, 2vw, 22px);
       font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.45;
-      margin-bottom: 28px;
+      letter-spacing: -0.5px;
+      flex: 1;
     }
 
-    .section-body {
+    .panel-trigger-title {
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      flex: 1;
+      text-align: left;
+    }
+
+    /* CTA panels — visually distinct */
+    .panel-cta .panel-trigger-label {
+      font-size: clamp(20px, 2.5vw, 28px);
+      letter-spacing: -1px;
+    }
+
+    .panel-cta .panel-chevron {
+      opacity: 0.7;
+    }
+
+    .panel-divider {
+      border: none;
+      border-top: 2px solid rgba(0,0,0,0.12);
+      margin: 48px 0 0;
+    }
+
+    @media (max-width: 600px) {
+      .panel-body-inner { padding: 0 0 28px; }
+    }
+
+    .panel-chevron {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      opacity: 0.35;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+
+    .panel.open .panel-chevron {
+      transform: rotate(180deg);
+      opacity: 0.7;
+    }
+
+    .panel-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .panel.open .panel-body {
+      max-height: 600px;
+    }
+
+    .panel-body-inner {
+      padding: 0 40px 36px 24px;
       font-size: clamp(15px, 1.5vw, 18px);
       line-height: 1.65;
-      font-weight: 400;
-      max-width: 640px;
-      margin: 0 auto;
       color: rgba(0,0,0,0.8);
     }
 
-    .section-body p { margin: 0 0 16px; }
-    .section-body p:last-child { margin-bottom: 0; }
-
-    .stat {
-      font-size: clamp(22px, 3.2vw, 40px);
-      line-height: 1.25;
-      font-weight: 500;
+    @media (max-width: 600px) {
+      .panel-body-inner { padding: 0 0 28px; }
     }
 
-    .stat + .stat {
-      margin-top: 40px;
+    .founder-block {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 20px;
     }
 
-    .source {
-      margin-top: 14px;
-      font-size: 12px;
-      color: rgba(0,0,0,0.55);
+    .founder-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
-    /* EMAIL */
+    .founder-name {
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .founder-role {
+      font-size: 13px;
+      opacity: 0.5;
+      margin-top: 4px;
+    }
+
+    .panel-body-inner p { margin: 0 0 14px; }
+    .panel-body-inner p:last-child { margin: 0; }
+
+    .stat-panel {
+      font-size: clamp(22px, 2.8vw, 36px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .source { font-size: 12px; color: rgba(0,0,0,0.5); margin-bottom: 20px; }
+
+    /* PANELS INTRO */
+    .panels-intro {
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: black;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 56px;
+      line-height: 1.2;
+    }
+
+    /* CTA */
+    .cta {
+      margin-top: 0;
+      text-align: center;
+    }
+
     .email-title {
       font-size: clamp(22px, 3vw, 36px);
       font-weight: 700;
@@ -212,19 +300,13 @@
       letter-spacing: -0.5px;
     }
 
-    .email-sub {
-      font-size: clamp(15px, 1.8vw, 18px);
-      color: rgba(0,0,0,0.65);
-      margin-bottom: 28px;
-    }
+    .email-sub { font-size: 16px; color: rgba(0,0,0,0.65); margin-bottom: 28px; }
 
-    .cta-contact {
-      margin-bottom: 32px;
-    }
+    .cta-contact { margin-bottom: 32px; }
 
     .cta-contact a {
       display: inline-block;
-      font-size: clamp(16px, 2vw, 22px);
+      font-size: clamp(15px, 1.8vw, 20px);
       font-weight: 600;
       color: black;
       text-decoration: none;
@@ -234,14 +316,86 @@
       transition: border-color 0.2s ease;
     }
 
-    .cta-contact a:hover {
-      border-color: black;
+    .cta-contact a:hover { border-color: black; }
+
+    .cta-divider { font-size: 13px; color: rgba(0,0,0,0.4); margin: 28px 0; }
+
+    /* WORK WITH US BOX */
+    .work-with-us-box {
+      margin-top: 60px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
     }
 
-    .cta-divider {
+    .work-with-us-title {
+      font-size: clamp(24px, 3.5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .work-with-us-box p {
+      font-size: clamp(15px, 1.5vw, 18px);
+      color: rgba(0,0,0,0.65);
+      margin: 0 0 24px;
+    }
+
+    .work-with-us-link {
+      display: inline-block;
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-weight: 700;
+      color: black;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(0,0,0,0.25);
+      padding-bottom: 2px;
+      transition: border-color 0.2s ease;
+    }
+
+    .work-with-us-link:hover { border-color: black; }
+
+    .work-with-us-divider {
       font-size: 13px;
       color: rgba(0,0,0,0.4);
-      margin: 32px 0;
+      margin: 28px 0 16px;
+    }
+
+    /* 18-25 BOTTOM SECTION */
+    .genz-section {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 80px 24px 120px;
+    }
+
+    .genz-section h2 {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin: 0 0 20px;
+    }
+
+    .genz-section p {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: rgba(255,255,255,0.7);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.5;
+    }
+
+    .genz-section input[type="email"] {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+    }
+
+    .genz-section input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
+
+    .genz-section button[type="submit"] {
+      background: white;
+      color: black;
     }
 
     form {
@@ -273,15 +427,6 @@
       cursor: pointer;
     }
 
-    button[type="submit"]:hover { opacity: 0.85; }
-
-    #success-message {
-      display: none;
-      margin-top: 18px;
-      font-size: 16px;
-      color: rgba(0,0,0,0.75);
-    }
-
     /* FOOTER */
     .footer {
       position: fixed;
@@ -294,6 +439,11 @@
       gap: 10px;
       align-items: center;
       white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link {
+      transition: color 0.3s ease;
     }
 
     .dot { opacity: 0.35; }
@@ -301,52 +451,18 @@
     .footer-link {
       color: rgba(0,0,0,0.75);
       text-decoration: none;
-      position: relative;
-    }
-
-    .footer-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      width: 100%;
-      height: 1px;
-      background: rgba(0,0,0,0.75);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.2s ease;
-    }
-
-    .footer-link:hover::after { transform: scaleX(1); }
-
-    @media (max-width: 600px) {
-      .footer {
-        gap: 8px;
-        font-size: 11px;
-        bottom: 10px;
-        white-space: normal;
-        justify-content: center;
-        width: 100%;
-        left: 0;
-        transform: none;
-        padding: 0 16px;
-        text-align: center;
-        flex-wrap: wrap;
-      }
-      .footer-hide-mobile { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- DYSLEXIA TOGGLE -->
   <button id="dyslexia-toggle" aria-pressed="false" title="Toggle dyslexia-friendly reading mode">Aa</button>
 
   <!-- HERO -->
   <div class="hero">
     <div class="hero-brand">GenView</div>
     <h1>Gen Z has opinions.<br>Time you heard them.</h1>
-    <button class="scroll-hint" id="scroll-hint" aria-label="Scroll down"
+    <button class="scroll-hint" aria-label="Scroll down"
       onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round">
@@ -355,66 +471,109 @@
     </button>
   </div>
 
-  <!-- CONTENT -->
+  <!-- STAT -->
+  <div style="text-align: center; padding: 100px 24px; max-width: 800px; margin: 0 auto;">
+    <div style="font-size: clamp(28px, 4.5vw, 58px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px;">90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit.</div>
+    <div style="font-size: 13px; color: rgba(0,0,0,0.45);">Dentsu UK, 2024</div>
+  </div>
+
+  <!-- PANELS -->
   <div class="wrap">
+    <div style="font-size: clamp(32px, 5vw, 64px); font-weight: 700; letter-spacing: -1.5px; text-align: center; margin-bottom: 16px;">GenView</div>
+    <p class="panels-intro">Gen Z insight and strategy for organisations that mean it.</p>
 
-    <!-- WHAT WE DO -->
-    <div class="block">
-      <div class="section-label">What we do</div>
-      <div class="section-body">
-        <p>GenView is structurally different from anything else in the market. We run a standing panel of paid, committed Gen Z participants – and use in-depth qualitative research, not mass surveys, to get to the bottom of how young people actually think, feel, and consume.</p>
-        <p>Most research tells you what young people say. We tell you why, and what's coming next.</p>
+    <div class="panel" id="panel-1" style="border-top: none;">
+      <button class="panel-trigger" onclick="togglePanel('panel-1')" aria-expanded="false">
+        <span class="panel-trigger-label">What we do</span>
+        <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="panel-body">
+        <div class="panel-body-inner">
+          <p>GenView runs a standing panel of paid, committed Gen Z participants – and uses in-depth qualitative research, not mass surveys, to get to the bottom of how young people actually think, feel, and consume. It's insight you can't get from surveys.</p>
+          <p>Most research tells you what young people say. GenView tells you why, and what's coming next.</p>
+        </div>
       </div>
     </div>
 
-    <!-- WHY IT MATTERS -->
-    <div class="block">
-      <div class="section-label">Why it matters</div>
-      <div class="stat">90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit.</div>
-      <div class="source">(Dentsu UK, 2024)</div>
-      <div class="section-body" style="margin-top: 36px;">The UK Government co-produced its National Youth Strategy directly with young people for the first time in history. Accountability to Gen Z is now government policy – and a growing expectation of business.</div>
-    </div>
-
-    <!-- WHO WE WORK WITH -->
-    <div class="block">
-      <div class="section-label">Who we work with</div>
-      <div class="section-body">
-        <p>We work with brands, organisations, and marketing teams across any sector where getting Gen Z right is non-negotiable. From FMCG to financial services, tech to entertainment – anyone who can't afford to get young people wrong.</p>
-        <p>We also work with charities, foundations, and policy teams who need to understand and authentically engage with young people.</p>
+    <div class="panel" id="panel-2">
+      <button class="panel-trigger" onclick="togglePanel('panel-2')" aria-expanded="false">
+        <span class="panel-trigger-label">Why it matters</span>
+        <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="panel-body">
+        <div class="panel-body-inner">
+          <p>The UK Government co-produced its National Youth Strategy directly with young people for the first time in history. Accountability to Gen Z is no longer just good practice – it's a growing expectation of organisations that do good.</p>
+        </div>
       </div>
     </div>
 
-    <!-- WHY GENVIEW -->
-    <div class="block">
-      <div class="section-label">Why GenView</div>
-      <div class="section-body">
-        <p>Most Gen Z insight comes from the outside looking in. GenView's founder has spent years embedded in the policy, advocacy, and institutional worlds that actually shape how young people live – from policymakers in the House of Commons to speaking at international fora such as UNICEF and consumer business summits. That's a different kind of intelligence.</p>
-        <p>The combination no competitor has built: a standing panel, in-depth co-design, and a closed loop with every young person involved – making the research richer, the data more honest, and the insight more reliable.</p>
+    <div class="panel" id="panel-3">
+      <button class="panel-trigger" onclick="togglePanel('panel-3')" aria-expanded="false">
+        <span class="panel-trigger-label">Who we work with</span>
+        <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="panel-body">
+        <div class="panel-body-inner">
+          <p>GenView works with brands, organisations, and marketing teams across any sector where getting Gen Z right is non-negotiable. From FMCG to financial services, tech to entertainment – anyone who can't afford to get young people wrong.</p>
+          <p>We also work with charities, foundations, and policy teams who need to understand and authentically engage with young people.</p>
+        </div>
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="block">
-      <div class="email-title">Ready to understand Gen Z?</div>
-      <div class="email-sub">Get in touch to talk about what GenView can do for your team.</div>
-
-      <div class="cta-contact">
-        <a href="mailto:hello@genview.uk">hello@genview.uk</a>
-        <a href="mailto:hello@genview.uk?subject=GenView Enquiry">Contact us →</a>
+    <div class="panel" id="panel-4">
+      <button class="panel-trigger" onclick="togglePanel('panel-4')" aria-expanded="false">
+        <span class="panel-trigger-label">Why GenView</span>
+        <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="panel-body">
+        <div class="panel-body-inner">
+          <div class="founder-block">
+            <img src="luke.jpg" alt="Luke Hall, Founder of GenView" class="founder-photo">
+            <div>
+              <div class="founder-name">Luke Hall</div>
+              <div class="founder-role">Founder, GenView</div>
+            </div>
+          </div>
+          <p>Most Gen Z insight comes from the outside looking in. GenView's founder has spent years embedded in the policy, advocacy, and institutional worlds that actually shape how young people live – from policymakers in the House of Commons to speaking at international fora such as UNICEF and consumer business summits. That's a different kind of intelligence.</p>
+          <p>The combination no competitor has built: a standing panel, in-depth co-design, and a closed loop with every young person involved – making the research richer, the data more honest, and the insight more reliable.</p>
+        </div>
       </div>
+    </div>
 
-      <div class="cta-divider">Or sign up to receive GenView's insights direct to your inbox.</div>
-
-      <form id="email-form">
+    <!-- CTA PANELS -->
+    <div class="work-with-us-box">
+      <div class="work-with-us-title">Work with us</div>
+      <p>Get in touch to talk about what GenView can do for your team.</p>
+      <a href="mailto:hello@genview.uk?subject=GenView Enquiry" class="work-with-us-link">Contact us →</a>
+      <div class="work-with-us-divider">Or sign up to receive GenView's insights direct to your inbox.</div>
+      <form id="form-org">
+        <input type="hidden" name="source" value="organisation">
         <input type="email" name="email" placeholder="Enter your email" required />
         <button type="submit">Submit</button>
       </form>
-
-      <div id="success-message">
-        Success. We'll be in touch.
-      </div>
+      <div id="success-org" style="display:none; margin-top:16px; font-size:15px; color:rgba(0,0,0,0.65);">Success. We'll be in touch.</div>
     </div>
 
+  </div>
+
+  <!-- 18-25 SECTION -->
+  <div class="genz-section">
+    <h2>Are you 18–25?</h2>
+    <p>Want to get paid for your opinions, and shape the organisations that you interact with every day?</p>
+    <form id="form-panel">
+      <input type="hidden" name="source" value="panel">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Join the waitlist</button>
+    </form>
+    <div id="success-panel" style="display:none; margin-top:16px; font-size:15px; color:rgba(255,255,255,0.7);">You're on the list. We'll be in touch.</div>
   </div>
 
   <!-- FOOTER -->
@@ -422,38 +581,36 @@
     <a href="https://www.linkedin.com/company/112609480/" target="_blank" class="footer-link">LinkedIn</a>
     <span class="dot">•</span>
     <a href="https://www.instagram.com/genviewuk/" target="_blank" class="footer-link">Instagram</a>
-    <span class="dot footer-hide-mobile">•</span>
-    <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" class="footer-link footer-hide-mobile">Luke Hall</a>
     <span class="dot">•</span>
     <a href="privacy.html" class="footer-link">Privacy Policy</a>
   </div>
 
-</body>
-
 <script>
-  // Email form
-  const form = document.getElementById("email-form");
-  const success = document.getElementById("success-message");
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQBHndjjEp-2qAPYGcVpNUHglOpEFJNtSbEkHs6CS32vU5wOG9wKC4CSMKYyIv8kfH/exec";
 
-  form.addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    try {
-      await fetch("https://script.google.com/macros/s/AKfycbzDudrRu-pavjB2wUZoiA74tYOiGO6beJxW8PdrT1XGftuunpHVInuLeJJnONl7N21m/exec", {
-        method: "POST",
-        body: formData
-      });
-      form.style.display = "none";
-      success.style.display = "block";
-      setTimeout(() => {
-        form.style.display = "flex";
-        success.style.display = "none";
-        form.reset();
-      }, 5000);
-    } catch (err) {
-      alert("Something went wrong. Please try again.");
-    }
-  });
+  async function submitForm(formId, successId) {
+    const form = document.getElementById(formId);
+    const success = document.getElementById(successId);
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      try {
+        await fetch(SCRIPT_URL, { method: "POST", body: formData, mode: "no-cors" });
+        form.style.display = "none";
+        success.style.display = "block";
+        setTimeout(() => {
+          form.style.display = "flex";
+          success.style.display = "none";
+          form.reset();
+        }, 5000);
+      } catch (err) {
+        alert("Something went wrong. Please try again.");
+      }
+    });
+  }
+
+  submitForm("form-org", "success-org");
+  submitForm("form-panel", "success-panel");
 
   // Dyslexia toggle
   const toggle = document.getElementById("dyslexia-toggle");
@@ -467,11 +624,41 @@
     localStorage.setItem("dyslexic", isOn);
   });
 
-  // Hide scroll hint on scroll
-  const scrollHint = document.getElementById("scroll-hint");
-  window.addEventListener("scroll", function() {
-    scrollHint.style.opacity = window.scrollY > 40 ? "0" : "0.4";
-  }, { passive: true });
+  // Footer turns white over black 18-25 section
+  const footer = document.querySelector('.footer');
+  const genzSection = document.querySelector('.genz-section');
+
+  const footerObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        footer.style.color = 'rgba(255,255,255,0.7)';
+        footer.querySelectorAll('.footer-link').forEach(a => a.style.color = 'rgba(255,255,255,0.9)');
+      } else {
+        footer.style.color = 'rgba(0,0,0,0.6)';
+        footer.querySelectorAll('.footer-link').forEach(a => a.style.color = 'rgba(0,0,0,0.75)');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  footerObserver.observe(genzSection);
+
+  function togglePanel(id) {
+    const panel = document.getElementById(id);
+    const btn = panel.querySelector('.panel-trigger');
+    const isOpen = panel.classList.contains('open');
+
+    // Close all panels
+    document.querySelectorAll('.panel').forEach(p => {
+      p.classList.remove('open');
+      p.querySelector('.panel-trigger').setAttribute('aria-expanded', 'false');
+    });
+
+    // Open clicked one if it was closed
+    if (!isOpen) {
+      panel.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
 </script>
 
 </body>

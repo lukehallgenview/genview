@@ -3,10 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GenView — Panel Preview</title>
+  <title>GenView</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="preview.png">
+
+  <meta name="description" content="Gen Z insight and strategy for organisations that mean it." />
+  <link rel="canonical" href="https://genview.uk/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GenView" />
+  <meta property="og:description" content="Gen Z insight and strategy for organisations that mean it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://genview.uk/" />
+  <meta property="og:image" content="https://genview.uk/preview.png" />
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="1500" />
+
+  <!-- Twitter / WhatsApp -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GenView" />
+  <meta name="twitter:description" content="Gen Z insight and strategy for organisations that mean it." />
+  <meta name="twitter:image" content="https://genview.uk/preview.png" />
+
   <link rel="stylesheet" href="fonts/leaguespartan.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
+
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Regular.otf') format('opentype');
+      font-weight: normal;
+    }
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Bold.otf') format('opentype');
+      font-weight: bold;
+    }
 
     body {
       margin: 0;
@@ -14,6 +47,42 @@
       font-family: 'League Spartan', sans-serif;
       color: black;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease;
+    }
+
+    body.dyslexic {
+      background-color: #f8f3e3;
+      font-family: 'OpenDyslexic', sans-serif;
+      letter-spacing: 0.05em;
+      word-spacing: 0.1em;
+      line-height: 1.6;
+    }
+
+    #dyslexia-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      border: 1px solid rgba(0,0,0,0.25);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      color: rgba(0,0,0,0.7);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    #dyslexia-toggle:hover {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.4);
+    }
+
+    body.dyslexic #dyslexia-toggle {
+      background: rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.35);
     }
 
     html { scroll-behavior: smooth; }
@@ -387,6 +456,8 @@
 </head>
 <body>
 
+  <button id="dyslexia-toggle" aria-pressed="false" title="Toggle dyslexia-friendly reading mode">Aa</button>
+
   <!-- HERO -->
   <div class="hero">
     <div class="hero-brand">GenView</div>
@@ -524,7 +595,7 @@
       e.preventDefault();
       const formData = new FormData(form);
       try {
-        await fetch(SCRIPT_URL, { method: "POST", body: formData });
+        await fetch(SCRIPT_URL, { method: "POST", body: formData, mode: "no-cors" });
         form.style.display = "none";
         success.style.display = "block";
         setTimeout(() => {
@@ -540,6 +611,18 @@
 
   submitForm("form-org", "success-org");
   submitForm("form-panel", "success-panel");
+
+  // Dyslexia toggle
+  const toggle = document.getElementById("dyslexia-toggle");
+  if (localStorage.getItem("dyslexic") === "true") {
+    document.body.classList.add("dyslexic");
+    toggle.setAttribute("aria-pressed", "true");
+  }
+  toggle.addEventListener("click", function() {
+    const isOn = document.body.classList.toggle("dyslexic");
+    toggle.setAttribute("aria-pressed", isOn ? "true" : "false");
+    localStorage.setItem("dyslexic", isOn);
+  });
 
   // Footer turns white over black 18-25 section
   const footer = document.querySelector('.footer');
