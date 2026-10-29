@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenView | Shaping Britain for those who will inherit it</title>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="preview.png">
+
+  <meta name="description" content="Policy for the next generation. GenView publishes research on the decisions that will define Britain for years to come." />
+  <link rel="canonical" href="https://genview.uk/" />
+
+  <meta property="og:title" content="GenView – Shaping Britain for those who will inherit it" />
+  <meta property="og:description" content="Policy for the next generation. GenView publishes research on the decisions that will define Britain for years to come." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://genview.uk/" />
+  <meta property="og:image" content="https://genview.uk/preview-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="627" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GenView – Shaping Britain for those who will inherit it" />
+  <meta name="twitter:description" content="Policy for the next generation. GenView publishes research on the decisions that will define Britain for years to come." />
+  <meta name="twitter:image" content="https://genview.uk/preview-og.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/leaguespartan.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Regular.otf') format('opentype');
+      font-weight: normal;
+    }
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/opendyslexic@latest/OpenDyslexic-Bold.otf') format('opentype');
+      font-weight: bold;
+    }
+
+    :root {
+      --mint: #adebb3;
+      --charcoal: #2C2C2C;
+      --c60: rgba(44,44,44,0.6);
+      --c40: rgba(44,44,44,0.4);
+      --c15: rgba(44,44,44,0.15);
+      --c08: rgba(44,44,44,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background-color: var(--mint);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease;
+    }
+
+    body.dyslexic {
+      background-color: #f8f3e3;
+      font-family: 'OpenDyslexic', sans-serif;
+      letter-spacing: 0.05em;
+      word-spacing: 0.1em;
+    }
+
+    /* FOCUS */
+    :focus-visible {
+      outline: 2px solid var(--charcoal);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    /* DYSLEXIA TOGGLE */
+    #dyslexia-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      padding: 8px 14px;
+      min-height: 44px;
+      font-size: 13px;
+      font-family: inherit;
+      border: 1px solid var(--c40);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      color: var(--charcoal);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    #dyslexia-toggle:hover { background: rgba(255,255,255,0.8); border-color: var(--charcoal); }
+    body.dyslexic #dyslexia-toggle { background: var(--c08); border-color: var(--c40); }
+
+    /* HEADINGS */
+    h1, h2 {
+      font-family: 'League Spartan', sans-serif;
+      color: var(--charcoal);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER / HERO */
+    header {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 24px 64px;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .wordmark {
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--charcoal);
+      margin: 0 0 28px;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin: 0 0 14px;
+      max-width: 20ch;
+      text-wrap: balance;
+    }
+
+    .hero-tagline {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: var(--c60);
+      margin: 0 0 36px;
+    }
+
+    /* FORMS */
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .form-row input[type="email"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 12px 16px;
+      font-size: 16px;
+      font-family: 'DM Sans', sans-serif;
+      border: 1.5px solid var(--c40);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.5);
+      color: var(--charcoal);
+      outline: none;
+      min-height: 44px;
+      transition: border-color 0.2s;
+    }
+
+    .form-row input[type="email"]:focus { border-color: var(--charcoal); }
+    .form-row input[type="email"]::placeholder { color: var(--c40); }
+
+    .form-row button[type="submit"] {
+      padding: 12px 22px;
+      font-size: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      border: none;
+      border-radius: 10px;
+      background: var(--charcoal);
+      color: var(--mint);
+      cursor: pointer;
+      min-height: 44px;
+      transition: opacity 0.2s;
+    }
+
+    .form-row button[type="submit"]:hover { opacity: 0.82; }
+
+    .form-error {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #b00020;
+    }
+
+    .consent-line {
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: var(--c60);
+      line-height: 1.4;
+    }
+
+    .consent-line a { color: var(--charcoal); text-decoration: underline; text-underline-offset: 2px; }
+
+    .form-success {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--charcoal);
+      padding: 10px 0;
+    }
+
+    .scroll-link {
+      display: inline-block;
+      margin-top: 28px;
+      font-size: 15px;
+      color: var(--charcoal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--c40);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .scroll-link:hover { border-color: var(--charcoal); }
+
+    /* MAIN SECTIONS */
+    main section {
+      padding: 80px 24px;
+      border-top: 1px solid var(--c15);
+    }
+
+    .section-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin: 0 0 24px;
+    }
+
+    .body-text {
+      max-width: 65ch;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--charcoal);
+      margin: 0;
+    }
+
+    /* NUMBERED LIST */
+    .questions-intro {
+      margin-bottom: 40px;
+    }
+
+    .questions-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: questions;
+      max-width: 680px;
+    }
+
+    .questions-list li {
+      counter-increment: questions;
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--c15);
+      font-size: clamp(16px, 1.8vw, 19px);
+      line-height: 1.45;
+      color: var(--charcoal);
+    }
+
+    .questions-list li:last-child {
+      border-bottom: 1px solid var(--c15);
+    }
+
+    .questions-list li::before {
+      content: counter(questions);
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 700;
+      color: var(--c15);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2.4ch;
+      text-align: right;
+    }
+
+    /* STATUS PILL */
+    .status-pill {
+      display: inline-block;
+      background: var(--c08);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-top: 24px;
+      line-height: 1.5;
+    }
+
+    /* ABOUT */
+    .about-card {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .about-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .about-name {
+      display: block;
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      color: var(--charcoal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--c40);
+    }
+    .about-name:hover { text-decoration-color: var(--charcoal); }
+
+    .about-role {
+      font-size: 14px;
+      color: var(--c60);
+      margin-top: 4px;
+    }
+
+    .about-bio {
+      margin-top: 20px;
+    }
+
+    /* GET INVOLVED CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.35);
+      border: 1px solid var(--c15);
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .card-title {
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin: 0 0 12px;
+      color: var(--charcoal);
+    }
+
+    .card > p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--charcoal);
+      margin: 0 0 24px;
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 22px;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      background: var(--charcoal);
+      color: var(--mint);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      min-height: 44px;
+      transition: opacity 0.2s;
+    }
+    .card-btn:hover { opacity: 0.82; }
+
+    /* Card form adjustments */
+    .card .form-row input[type="email"] {
+      background: rgba(255,255,255,0.7);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--c15);
+      padding: 40px 24px 48px;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .footer-links a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    .footer-links .dot { color: var(--c40); }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--c60);
+      margin: 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 60px 20px 48px; min-height: 70vh; }
+      main section { padding: 60px 20px; }
+      footer { padding: 36px 20px 44px; }
+
+      .form-row { flex-direction: column; }
+      .form-row input[type="email"],
+      .form-row button[type="submit"] { width: 100%; }
+
+      .about-card { gap: 16px; }
+      .about-photo { width: 80px; height: 80px; }
+
+      .card { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="dyslexia-toggle" aria-pressed="false" title="Toggle dyslexia-friendly reading mode">Aa</button>
+
+  <header>
+    <div class="hero-inner">
+      <p class="wordmark">GenView</p>
+      <h1>Shaping Britain for those who will inherit it.</h1>
+      <p class="hero-tagline">Policy for the next generation.</p>
+
+      <form id="form-hero" novalidate>
+        <input type="hidden" name="source" value="hero">
+        <label class="form-label" for="email-hero">Email address</label>
+        <div class="form-row">
+          <input type="email" id="email-hero" name="email"
+                 placeholder="name@example.com"
+                 autocomplete="email" spellcheck="false" required>
+          <button type="submit">Get updates</button>
+        </div>
+        <div class="form-error" id="error-hero" role="alert" hidden>Enter an email address like name@example.com</div>
+        <p class="consent-line">By signing up you agree to receive email updates from GenView. See our <a href="privacy.html">privacy policy</a>.</p>
+      </form>
+      <div role="status" id="success-hero" hidden class="form-success">Thanks – you're signed up.</div>
+
+      <a class="scroll-link" href="#why-it-matters">Why GenView ↓</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="why-it-matters" aria-labelledby="h-why">
+      <div class="section-inner">
+        <h2 id="h-why">Why it matters</h2>
+        <p class="body-text">The next generation is different. Young people are active well beyond the ballot box – in what they buy, the causes they back and the campaigns they join. From votes at 16 to the social media ban, government policy is landing on young people's doorstep more than ever before. Yet the decisions that will shape their lives for years to come are too often made without hearing them.</p>
+      </div>
+    </section>
+
+    <section id="questions" aria-labelledby="h-questions">
+      <div class="section-inner">
+        <h2 id="h-questions">The questions we'll ask</h2>
+        <p class="body-text questions-intro">Every policy area lands on the next generation. Below are just some of the issues most affecting young people today.</p>
+        <ol class="questions-list">
+          <li>Will the next generation be able to own a home?</li>
+          <li>What does Votes at 16 change about how those in power listen?</li>
+          <li>How do we protect young people online without shutting them out?</li>
+          <li>Is the tax system fair to people just starting out?</li>
+          <li>Is mental health support built for the generation that needs it most?</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="what-we-do" aria-labelledby="h-what">
+      <div class="section-inner">
+        <h2 id="h-what">What we do</h2>
+        <p class="body-text">GenView champions policy for the next generation. We publish research on the decisions that will define Britain for years to come, bring decision-makers face to face with the generations their choices affect most, and take the argument to the country.</p>
+        <span class="status-pill">GenView is in its pre-launch phase. Our first publication is due in 2027.</span>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="h-about">
+      <div class="section-inner">
+        <h2 id="h-about">About</h2>
+        <div class="about-card">
+          <img src="luke-optimised.jpg" alt="Luke Hall, Director of GenView"
+               class="about-photo" width="100" height="100">
+          <div>
+            <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank"
+               rel="noopener noreferrer" class="about-name">Luke Hall</a>
+            <div class="about-role">Director, GenView</div>
+          </div>
+        </div>
+        <p class="body-text about-bio">Luke Hall is Director of GenView. His work spans roles in Parliament, industry and the third sector, and focuses on shaping the decisions that will define Britain, in the interests of those who will inherit it.</p>
+      </div>
+    </section>
+
+    <section id="get-involved" aria-labelledby="h-involved">
+      <div class="section-inner">
+        <h2 id="h-involved">Get involved</h2>
+        <div class="cards">
+
+          <div class="card">
+            <div class="card-title">Write for GenView</div>
+            <p>Got something to say about the Britain you'll inherit? Write for GenView.</p>
+            <a href="mailto:hello@genview.uk?subject=Write%20for%20GenView" class="card-btn">Get in touch</a>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Stay in touch</div>
+            <p>A short note when we publish, and first invitations to our events. Occasional, never spam.</p>
+            <form id="form-card" novalidate>
+              <input type="hidden" name="source" value="card">
+              <label class="form-label" for="email-card">Email address</label>
+              <div class="form-row">
+                <input type="email" id="email-card" name="email"
+                       placeholder="name@example.com"
+                       autocomplete="email" spellcheck="false" required>
+                <button type="submit">Get updates</button>
+              </div>
+              <div class="form-error" id="error-card" role="alert" hidden>Enter an email address like name@example.com</div>
+              <p class="consent-line">By signing up you agree to receive email updates from GenView. See our <a href="privacy.html">privacy policy</a>.</p>
+            </form>
+            <div role="status" id="success-card" hidden class="form-success">Thanks – you're signed up.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://www.linkedin.com/company/112609480/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="https://www.instagram.com/genviewuk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="privacy.html">Privacy Policy</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="mailto:hello@genview.uk">hello@genview.uk</a>
+      </nav>
+      <p class="footer-copy">© 2026 GenView</p>
+    </div>
+  </footer>
+
+<script>
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQBHndjjEp-2qAPYGcVpNUHglOpEFJNtSbEkHs6CS32vU5wOG9wKC4CSMKYyIv8kfH/exec";
+
+  function setupForm(formId, successId, errorId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    const successEl = document.getElementById(successId);
+    const errorEl  = document.getElementById(errorId);
+    const input    = form.querySelector('input[type="email"]');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!input.value || !input.checkValidity()) {
+        errorEl.hidden = false;
+        input.focus();
+        return;
+      }
+      errorEl.hidden = true;
+      try {
+        await fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
+        form.hidden = true;
+        successEl.hidden = false;
+      } catch (_) {
+        errorEl.hidden = false;
+      }
+    });
+
+    input.addEventListener('input', function() {
+      if (!errorEl.hidden) errorEl.hidden = true;
+    });
+  }
+
+  setupForm('form-hero', 'success-hero', 'error-hero');
+  setupForm('form-card', 'success-card', 'error-card');
+
+  const toggle = document.getElementById('dyslexia-toggle');
+  if (localStorage.getItem('dyslexic') === 'true') {
+    document.body.classList.add('dyslexic');
+    toggle.setAttribute('aria-pressed', 'true');
+  }
+  toggle.addEventListener('click', function() {
+    const isOn = document.body.classList.toggle('dyslexic');
+    toggle.setAttribute('aria-pressed', String(isOn));
+    localStorage.setItem('dyslexic', String(isOn));
+  });
+</script>
+
+</body>
+</html>
