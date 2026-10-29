@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GenView</title>
+  <title>GenView | Shaping Britain for those who will inherit it</title>
+
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="preview.png">
 
-  <meta name="description" content="Policy for the next generation. GenView publishes research on the decisions that will shape Britain." />
+  <meta name="description" content="Policy for the next generation. GenView publishes research on the decisions that will define Britain for years to come." />
   <link rel="canonical" href="https://genview.uk/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="GenView" />
-  <meta property="og:description" content="Policy for the next generation. GenView publishes research on the decisions that will shape Britain." />
+  <meta property="og:title" content="GenView – Shaping Britain for those who will inherit it" />
+  <meta property="og:description" content="Policy for the next generation. GenView publishes research on the decisions that will define Britain for years to come." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genview.uk/" />
-  <meta property="og:image" content="https://genview.uk/preview.png" />
-  <meta property="og:image:width" content="1500" />
-  <meta property="og:image:height" content="1500" />
+  <meta property="og:image" content="https://genview.uk/preview-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="627" />
 
-  <!-- Twitter / WhatsApp -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="GenView" />
-  <meta name="twitter:description" content="Policy for the next generation. GenView publishes research on the decisions that will shape Britain." />
-  <meta name="twitter:image" content="https://genview.uk/preview.png" />
+  <meta name="twitter:title" content="GenView – Shaping Britain for those who will inherit it" />
+  <meta name="twitter:description" content="Policy for the next generation. GenView publishes research on the decisions that will define Britain for years to come." />
+  <meta name="twitter:image" content="https://genview.uk/preview-og.png" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="fonts/leaguespartan.css">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -41,11 +44,24 @@
       font-weight: bold;
     }
 
+    :root {
+      --mint: #adebb3;
+      --charcoal: #2C2C2C;
+      --c60: rgba(44,44,44,0.6);
+      --c40: rgba(44,44,44,0.4);
+      --c15: rgba(44,44,44,0.15);
+      --c08: rgba(44,44,44,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      background-color: #adebb3;
-      font-family: 'League Spartan', sans-serif;
-      color: black;
+      background-color: var(--mint);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--charcoal);
       -webkit-font-smoothing: antialiased;
       transition: background-color 0.3s ease;
     }
@@ -55,411 +71,402 @@
       font-family: 'OpenDyslexic', sans-serif;
       letter-spacing: 0.05em;
       word-spacing: 0.1em;
-      line-height: 1.6;
     }
 
+    /* FOCUS */
+    :focus-visible {
+      outline: 2px solid var(--charcoal);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    /* DYSLEXIA TOGGLE */
     #dyslexia-toggle {
       position: fixed;
       top: 16px;
       right: 16px;
       padding: 8px 14px;
+      min-height: 44px;
       font-size: 13px;
       font-family: inherit;
-      border: 1px solid rgba(0,0,0,0.25);
+      border: 1px solid var(--c40);
       border-radius: 20px;
       background: rgba(255,255,255,0.5);
-      color: rgba(0,0,0,0.7);
+      color: var(--charcoal);
       cursor: pointer;
       backdrop-filter: blur(6px);
       z-index: 100;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    #dyslexia-toggle:hover { background: rgba(255,255,255,0.8); border-color: var(--charcoal); }
+    body.dyslexic #dyslexia-toggle { background: var(--c08); border-color: var(--c40); }
+
+    /* HEADINGS */
+    h1, h2 {
+      font-family: 'League Spartan', sans-serif;
+      color: var(--charcoal);
     }
 
-    #dyslexia-toggle:hover {
-      background: rgba(255,255,255,0.8);
-      border-color: rgba(0,0,0,0.4);
-    }
-
-    body.dyslexic #dyslexia-toggle {
-      background: rgba(0,0,0,0.08);
-      border-color: rgba(0,0,0,0.35);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    /* CONTAINER */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
       padding: 0 24px;
     }
 
-    .hero-brand {
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-    }
-
-    .hero-sub {
-      font-size: clamp(16px, 1.8vw, 22px);
-      font-weight: 400;
-      color: rgba(0,0,0,0.55);
-      margin: 8px 0 20px;
-      letter-spacing: 0;
-    }
-
-    .hero h1 {
-      font-size: clamp(40px, 6.5vw, 82px);
-      font-weight: 700;
-      margin: 0;
-      letter-spacing: -1.5px;
-      line-height: 1.05;
-    }
-
-    .scroll-hint {
-      margin: 40px auto 0;
+    /* HEADER / HERO */
+    header {
+      min-height: 75vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      animation: bounce 2s infinite;
-      opacity: 0.4;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      color: black;
+      padding: 80px 24px 64px;
     }
 
-    .scroll-hint svg { width: 24px; height: 24px; }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(6px); }
-    }
-
-    /* PANELS */
-    .wrap {
+    .hero-inner {
       max-width: 800px;
       margin: 0 auto;
-      padding: 80px 24px 140px;
-    }
-
-    .panel {
-      border-top: 1px solid rgba(0,0,0,0.15);
-    }
-
-    .panel:last-of-type {
-      border-bottom: 1px solid rgba(0,0,0,0.15);
-    }
-
-    .panel-trigger {
       width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 32px 0;
+    }
+
+    .wordmark {
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--charcoal);
+      margin: 0 0 28px;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin: 0 0 14px;
+      max-width: 20ch;
+      text-wrap: balance;
+    }
+
+    .hero-tagline {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: var(--c60);
+      margin: 0 0 36px;
+    }
+
+    /* FORMS */
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .form-row {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: inherit;
-      text-align: left;
-      gap: 16px;
-      transition: opacity 0.15s ease;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .panel-trigger:hover { opacity: 0.7; }
-
-    .panel-trigger-label {
-      font-size: clamp(17px, 2vw, 22px);
-      font-weight: 700;
-      letter-spacing: -0.5px;
+    .form-row input[type="email"] {
       flex: 1;
+      min-width: 200px;
+      padding: 12px 16px;
+      font-size: 16px;
+      font-family: 'DM Sans', sans-serif;
+      border: 1.5px solid var(--c40);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.5);
+      color: var(--charcoal);
+      outline: none;
+      min-height: 44px;
+      transition: border-color 0.2s;
     }
 
-    .panel-trigger-title {
-      font-size: clamp(17px, 2vw, 22px);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-      flex: 1;
-      text-align: left;
-    }
+    .form-row input[type="email"]:focus { border-color: var(--charcoal); }
+    .form-row input[type="email"]::placeholder { color: var(--c40); }
 
-    /* CTA panels — visually distinct */
-    .panel-cta .panel-trigger-label {
-      font-size: clamp(20px, 2.5vw, 28px);
-      letter-spacing: -1px;
-    }
-
-    .panel-cta .panel-chevron {
-      opacity: 0.7;
-    }
-
-    .panel-divider {
+    .form-row button[type="submit"] {
+      padding: 12px 22px;
+      font-size: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
       border: none;
-      border-top: 2px solid rgba(0,0,0,0.12);
-      margin: 48px 0 0;
+      border-radius: 10px;
+      background: var(--charcoal);
+      color: var(--mint);
+      cursor: pointer;
+      min-height: 44px;
+      transition: opacity 0.2s;
     }
 
-    @media (max-width: 600px) {
-      .panel-body-inner { padding: 0 0 28px; }
+    .form-row button[type="submit"]:hover { opacity: 0.82; }
+
+    .form-error {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #b00020;
     }
 
-    .panel-chevron {
-      width: 18px;
-      height: 18px;
+    .consent-line {
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: var(--c60);
+      line-height: 1.4;
+    }
+
+    .consent-line a { color: var(--charcoal); text-decoration: underline; text-underline-offset: 2px; }
+
+    .form-success {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--charcoal);
+      padding: 10px 0;
+    }
+
+    .scroll-link {
+      display: inline-block;
+      margin-top: 28px;
+      font-size: 15px;
+      color: var(--charcoal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--c40);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .scroll-link:hover { border-color: var(--charcoal); }
+
+    /* MAIN SECTIONS */
+    main section {
+      padding: 80px 24px;
+      border-top: 1px solid var(--c15);
+    }
+
+    .section-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin: 0 0 24px;
+    }
+
+    .body-text {
+      max-width: 65ch;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--charcoal);
+      margin: 0;
+    }
+
+    /* NUMBERED LIST */
+    .questions-intro {
+      margin-bottom: 40px;
+    }
+
+    .questions-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: questions;
+      max-width: 680px;
+    }
+
+    .questions-list li {
+      counter-increment: questions;
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--c15);
+      font-size: clamp(16px, 1.8vw, 19px);
+      line-height: 1.45;
+      color: var(--charcoal);
+    }
+
+    .questions-list li:last-child {
+      border-bottom: 1px solid var(--c15);
+    }
+
+    .questions-list li::before {
+      content: counter(questions);
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 700;
+      color: var(--c15);
+      line-height: 1;
       flex-shrink: 0;
-      opacity: 0.35;
-      transition: transform 0.3s ease, opacity 0.2s ease;
+      width: 2.4ch;
+      text-align: right;
     }
 
-    .panel.open .panel-chevron {
-      transform: rotate(180deg);
-      opacity: 0.7;
+    /* STATUS PILL */
+    .status-pill {
+      display: inline-block;
+      background: var(--c08);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-top: 24px;
+      line-height: 1.5;
     }
 
-    .panel-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .panel.open .panel-body {
-      max-height: 600px;
-    }
-
-    .panel-body-inner {
-      padding: 0 40px 36px 24px;
-      font-size: clamp(15px, 1.5vw, 18px);
-      line-height: 1.65;
-      color: rgba(0,0,0,0.8);
-    }
-
-    @media (max-width: 600px) {
-      .panel-body-inner { padding: 0 0 28px; }
-    }
-
-    .founder-block {
+    /* ABOUT */
+    .about-card {
       display: flex;
       gap: 24px;
-      align-items: center;
+      align-items: flex-start;
       margin-bottom: 20px;
     }
 
-    .founder-photo {
-      width: 110px;
-      height: 110px;
+    .about-photo {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
     }
 
-    .founder-name {
+    .about-name {
+      display: block;
+      font-family: 'League Spartan', sans-serif;
       font-size: clamp(20px, 2.2vw, 26px);
       font-weight: 700;
       letter-spacing: -0.5px;
       line-height: 1.1;
+      color: var(--charcoal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--c40);
     }
+    .about-name:hover { text-decoration-color: var(--charcoal); }
 
-    .founder-role {
-      font-size: 13px;
-      opacity: 0.5;
+    .about-role {
+      font-size: 14px;
+      color: var(--c60);
       margin-top: 4px;
     }
 
-    .panel-body-inner p { margin: 0 0 14px; }
-    .panel-body-inner p:last-child { margin: 0; }
+    .about-bio {
+      margin-top: 20px;
+    }
 
-    .stat-panel {
-      font-size: clamp(22px, 2.8vw, 36px);
+    /* GET INVOLVED CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.35);
+      border: 1px solid var(--c15);
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .card-title {
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(18px, 2vw, 22px);
       font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+      margin: 0 0 12px;
+      color: var(--charcoal);
     }
 
-    .source { font-size: 12px; color: rgba(0,0,0,0.5); margin-bottom: 20px; }
-
-    /* PANELS INTRO */
-    .panels-intro {
-      font-size: clamp(22px, 3vw, 36px);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      color: black;
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 72px;
-      line-height: 1.2;
-    }
-
-    /* CTA */
-    .cta {
-      margin-top: 0;
-      text-align: center;
-    }
-
-    .email-title {
-      font-size: clamp(22px, 3vw, 36px);
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
-    }
-
-    .email-sub { font-size: 16px; color: rgba(0,0,0,0.65); margin-bottom: 28px; }
-
-    .cta-contact { margin-bottom: 32px; }
-
-    .cta-contact a {
-      display: inline-block;
-      font-size: clamp(15px, 1.8vw, 20px);
-      font-weight: 600;
-      color: black;
-      text-decoration: none;
-      border-bottom: 2px solid rgba(0,0,0,0.25);
-      padding-bottom: 2px;
-      margin: 6px 16px;
-      transition: border-color 0.2s ease;
-    }
-
-    .cta-contact a:hover { border-color: black; }
-
-    .cta-divider { font-size: 13px; color: rgba(0,0,0,0.4); margin: 28px 0; }
-
-    /* WORK WITH US BOX */
-    .work-with-us-box {
-      margin-top: 100px;
-      background: none;
-      border: 1px solid rgba(0,0,0,0.15);
-      border-radius: 20px;
-      padding: 64px 48px;
-      text-align: center;
-    }
-
-    .work-with-us-title {
-      font-size: clamp(24px, 3.5vw, 42px);
-      font-weight: 700;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .work-with-us-box p {
-      font-size: clamp(15px, 1.5vw, 18px);
-      color: rgba(0,0,0,0.65);
+    .card > p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--charcoal);
       margin: 0 0 24px;
     }
 
-    .work-with-us-link {
-      display: inline-block;
-      font-size: clamp(16px, 1.8vw, 20px);
-      font-weight: 700;
-      color: black;
-      text-decoration: none;
-      border-bottom: 2px solid rgba(0,0,0,0.25);
-      padding-bottom: 2px;
-      transition: border-color 0.2s ease;
-    }
-
-    .work-with-us-link:hover { border-color: black; }
-
-    .work-with-us-divider {
-      font-size: clamp(15px, 1.5vw, 18px);
-      color: rgba(0,0,0,0.4);
-      margin: 28px 0 16px;
-    }
-
-    /* 18-25 BOTTOM SECTION */
-    .genz-section {
-      background: black;
-      color: white;
-      text-align: center;
-      padding: 80px 24px 120px;
-    }
-
-    .genz-section h2 {
-      font-size: clamp(36px, 6vw, 72px);
-      font-weight: 700;
-      letter-spacing: -2px;
-      line-height: 1;
-      margin: 0 0 20px;
-    }
-
-    .genz-section p {
-      font-size: clamp(16px, 1.8vw, 20px);
-      color: rgba(255,255,255,0.7);
-      max-width: 480px;
-      margin: 0 auto 36px;
-      line-height: 1.5;
-    }
-
-    .genz-section input[type="email"] {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: white;
-    }
-
-    .genz-section input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
-
-    .genz-section button[type="submit"] {
-      background: white;
-      color: black;
-    }
-
-    form {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    input[type="email"] {
-      padding: 14px 16px;
-      font-size: 16px;
-      font-family: inherit;
-      border: 1px solid rgba(0,0,0,0.2);
-      border-radius: 10px;
-      width: 260px;
-      background: rgba(255,255,255,0.35);
-      outline: none;
-    }
-
-    button[type="submit"] {
-      padding: 14px 18px;
-      font-size: 16px;
-      font-family: inherit;
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 22px;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      background: var(--charcoal);
+      color: var(--mint);
       border: none;
       border-radius: 10px;
-      background: black;
-      color: white;
       cursor: pointer;
+      text-decoration: none;
+      min-height: 44px;
+      transition: opacity 0.2s;
+    }
+    .card-btn:hover { opacity: 0.82; }
+
+    /* Card form adjustments */
+    .card .form-row input[type="email"] {
+      background: rgba(255,255,255,0.7);
     }
 
     /* FOOTER */
-    .footer {
-      position: fixed;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 13px;
-      color: rgba(0,0,0,0.6);
+    footer {
+      border-top: 1px solid var(--c15);
+      padding: 40px 24px 48px;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
       display: flex;
+      flex-direction: column;
       gap: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
       align-items: center;
-      white-space: nowrap;
-      transition: color 0.3s ease;
+      font-size: 14px;
     }
 
-    .footer-link {
-      transition: color 0.3s ease;
-    }
-
-    .dot { opacity: 0.35; }
-
-    .footer-link {
-      color: rgba(0,0,0,0.75);
+    .footer-links a {
+      color: var(--charcoal);
       text-decoration: none;
+    }
+    .footer-links a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    .footer-links .dot { color: var(--c40); }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--c60);
+      margin: 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 60px 20px 48px; min-height: 70vh; }
+      main section { padding: 60px 20px; }
+      footer { padding: 36px 20px 44px; }
+
+      .form-row { flex-direction: column; }
+      .form-row input[type="email"],
+      .form-row button[type="submit"] { width: 100%; }
+
+      .about-card { gap: 16px; }
+      .about-photo { width: 80px; height: 80px; }
+
+      .card { padding: 28px 24px; }
     }
   </style>
 </head>
@@ -467,177 +474,172 @@
 
   <button id="dyslexia-toggle" aria-pressed="false" title="Toggle dyslexia-friendly reading mode">Aa</button>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-brand">GenView</div>
-    <div class="hero-sub">Policy for the next generation.</div>
-    <h1>Shaping Britain for those<br>who will inherit it.</h1>
-    <button class="scroll-hint" aria-label="Scroll down"
-      onclick="document.querySelector('.wrap').scrollIntoView({behavior: 'smooth'})">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </button>
-  </div>
+  <header>
+    <div class="hero-inner">
+      <p class="wordmark">GenView</p>
+      <h1>Shaping Britain for those who will inherit it.</h1>
+      <p class="hero-tagline">Policy for the next generation.</p>
 
-  <!-- PANELS -->
-  <div class="wrap">
-    <div style="font-size: clamp(32px, 5vw, 64px); font-weight: 700; letter-spacing: -1.5px; text-align: center; margin-bottom: 16px;">GenView</div>
-    <p class="panels-intro">Policy for the next generation.</p>
-
-    <div class="panel" id="panel-1" style="border-top: none;">
-      <button class="panel-trigger" onclick="togglePanel('panel-1')" aria-expanded="false">
-        <span class="panel-trigger-label">What we do</span>
-        <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
-      <div class="panel-body">
-        <div class="panel-body-inner">
-          <p>GenView champions policy for the next generation. We publish research on the decisions that will define Britain for years to come, bring decision-makers face to face with the generation their choices affect most, and take the argument to the country.</p>
+      <form id="form-hero" novalidate>
+        <input type="hidden" name="source" value="hero">
+        <label class="form-label" for="email-hero">Email address</label>
+        <div class="form-row">
+          <input type="email" id="email-hero" name="email"
+                 placeholder="name@example.com"
+                 autocomplete="email" spellcheck="false" required>
+          <button type="submit">Get updates</button>
         </div>
-      </div>
-    </div>
-
-    <div class="panel" id="panel-2">
-      <button class="panel-trigger" onclick="togglePanel('panel-2')" aria-expanded="false">
-        <span class="panel-trigger-label">Why it matters</span>
-        <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
-      <div class="panel-body">
-        <div class="panel-body-inner">
-          <p>The next generation is different. Young people are active well beyond the ballot box – in what they buy, the causes they back and the campaigns they join. From votes at 16 to the social media ban, government policy is landing on young people's doorstep more than ever before. Yet the decisions that will shape their lives for years to come are too often made without hearing them.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel" id="panel-4">
-      <button class="panel-trigger" onclick="togglePanel('panel-4')" aria-expanded="false">
-        <span class="panel-trigger-label">About</span>
-        <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
-      <div class="panel-body">
-        <div class="panel-body-inner">
-          <div class="founder-block">
-            <img src="luke.jpg" alt="Luke Hall, Director of GenView" class="founder-photo">
-            <div>
-              <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" rel="noopener noreferrer" class="founder-name" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(0,0,0,0.3);">Luke Hall</a>
-              <div class="founder-role">Director, GenView</div>
-            </div>
-          </div>
-          <p>Luke Hall is Director of GenView. His work spans roles in Parliament, industry and the third sector, and focuses on shaping the decisions that will define Britain, in the interests of those who will inherit it.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA PANELS -->
-    <div class="work-with-us-box">
-      <div class="work-with-us-title">Follow our work</div>
-      <p>Sign up for updates, or get in touch at <a href="mailto:hello@genview.uk" style="color:inherit;">hello@genview.uk</a>.</p>
-      <a href="mailto:hello@genview.uk?subject=GenView Enquiry" class="work-with-us-link">Contact us →</a>
-      <form id="form-org" style="margin-top: 28px;">
-        <input type="hidden" name="source" value="organisation">
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit">Submit</button>
+        <div class="form-error" id="error-hero" role="alert" hidden>Enter an email address like name@example.com</div>
+        <p class="consent-line">By signing up you agree to receive email updates from GenView. See our <a href="privacy.html">privacy policy</a>.</p>
       </form>
-      <div id="success-org" style="display:none; margin-top:16px; font-size:15px; color:rgba(0,0,0,0.65);">Success. We'll be in touch.</div>
+      <div role="status" id="success-hero" hidden class="form-success">Thanks – you're signed up.</div>
+
+      <a class="scroll-link" href="#why-it-matters">Why GenView ↓</a>
     </div>
+  </header>
 
-  </div>
+  <main>
 
-  <!-- WRITE FOR GENVIEW -->
-  <div class="genz-section">
-    <p>Got something to say about the Britain you'll inherit? Write for GenView.</p>
-    <a href="mailto:hello@genview.uk?subject=Write%20for%20GenView" style="display:inline-block; padding:14px 28px; font-size:clamp(15px,1.6vw,18px); font-family:inherit; font-weight:700; background:white; color:black; border:none; border-radius:10px; cursor:pointer; text-decoration:none;">Get in touch</a>
-  </div>
+    <section id="why-it-matters" aria-labelledby="h-why">
+      <div class="section-inner">
+        <h2 id="h-why">Why it matters</h2>
+        <p class="body-text">The next generation is different. Young people are active well beyond the ballot box – in what they buy, the causes they back and the campaigns they join. From votes at 16 to the social media ban, government policy is landing on young people's doorstep more than ever before. Yet the decisions that will shape their lives for years to come are too often made without hearing them.</p>
+      </div>
+    </section>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <a href="https://www.linkedin.com/company/112609480/" target="_blank" class="footer-link">LinkedIn</a>
-    <span class="dot">•</span>
-    <a href="https://www.instagram.com/genviewuk/" target="_blank" class="footer-link">Instagram</a>
-    <span class="dot">•</span>
-    <a href="privacy.html" class="footer-link">Privacy Policy</a>
-  </div>
+    <section id="questions" aria-labelledby="h-questions">
+      <div class="section-inner">
+        <h2 id="h-questions">The questions we'll ask</h2>
+        <p class="body-text questions-intro">Every policy area lands on the next generation. These are the questions we'll start with.</p>
+        <ol class="questions-list">
+          <li>Will the next generation be able to own a home?</li>
+          <li>What does votes at 16 change about how politics listens?</li>
+          <li>How do we protect young people online without shutting them out?</li>
+          <li>Is the tax system fair to people just starting out?</li>
+          <li>Is mental health support built for the generation that needs it most?</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="what-we-do" aria-labelledby="h-what">
+      <div class="section-inner">
+        <h2 id="h-what">What we do</h2>
+        <p class="body-text">GenView champions policy for the next generation. We publish research on the decisions that will define Britain for years to come, bring decision-makers face to face with the generation their choices affect most, and take the argument to the country.</p>
+        <span class="status-pill">GenView is in its pre-launch phase. Our first publication is due in 2027.</span>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="h-about">
+      <div class="section-inner">
+        <h2 id="h-about">About</h2>
+        <div class="about-card">
+          <img src="luke-optimised.jpg" alt="Luke Hall, Director of GenView"
+               class="about-photo" width="100" height="100">
+          <div>
+            <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank"
+               rel="noopener noreferrer" class="about-name">Luke Hall</a>
+            <div class="about-role">Director, GenView</div>
+          </div>
+        </div>
+        <p class="body-text about-bio">Luke Hall is Director of GenView. His work spans roles in Parliament, industry and the third sector, and focuses on shaping the decisions that will define Britain, in the interests of those who will inherit it.</p>
+      </div>
+    </section>
+
+    <section id="get-involved" aria-labelledby="h-involved">
+      <div class="section-inner">
+        <h2 id="h-involved">Get involved</h2>
+        <div class="cards">
+
+          <div class="card">
+            <div class="card-title">Write for GenView</div>
+            <p>Got something to say about the Britain you'll inherit? Write for GenView.</p>
+            <a href="mailto:hello@genview.uk?subject=Write%20for%20GenView" class="card-btn">Get in touch</a>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Stay in touch</div>
+            <p>A short note when we publish, and first invitations to our events. Occasional, never spam.</p>
+            <form id="form-card" novalidate>
+              <input type="hidden" name="source" value="card">
+              <label class="form-label" for="email-card">Email address</label>
+              <div class="form-row">
+                <input type="email" id="email-card" name="email"
+                       placeholder="name@example.com"
+                       autocomplete="email" spellcheck="false" required>
+                <button type="submit">Get updates</button>
+              </div>
+              <div class="form-error" id="error-card" role="alert" hidden>Enter an email address like name@example.com</div>
+              <p class="consent-line">By signing up you agree to receive email updates from GenView. See our <a href="privacy.html">privacy policy</a>.</p>
+            </form>
+            <div role="status" id="success-card" hidden class="form-success">Thanks – you're signed up.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://www.linkedin.com/company/112609480/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="https://www.instagram.com/genviewuk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="privacy.html">Privacy Policy</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="mailto:hello@genview.uk">hello@genview.uk</a>
+      </nav>
+      <p class="footer-copy">© 2026 GenView</p>
+    </div>
+  </footer>
 
 <script>
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQBHndjjEp-2qAPYGcVpNUHglOpEFJNtSbEkHs6CS32vU5wOG9wKC4CSMKYyIv8kfH/exec";
 
-  async function submitForm(formId, successId) {
+  function setupForm(formId, successId, errorId) {
     const form = document.getElementById(formId);
-    const success = document.getElementById(successId);
-    form.addEventListener("submit", async function(e) {
+    if (!form) return;
+    const successEl = document.getElementById(successId);
+    const errorEl  = document.getElementById(errorId);
+    const input    = form.querySelector('input[type="email"]');
+
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const formData = new FormData(form);
+      if (!input.value || !input.checkValidity()) {
+        errorEl.hidden = false;
+        input.focus();
+        return;
+      }
+      errorEl.hidden = true;
       try {
-        await fetch(SCRIPT_URL, { method: "POST", body: formData, mode: "no-cors" });
-        form.style.display = "none";
-        success.style.display = "block";
-        setTimeout(() => {
-          form.style.display = "flex";
-          success.style.display = "none";
-          form.reset();
-        }, 5000);
-      } catch (err) {
-        alert("Something went wrong. Please try again.");
+        await fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
+        form.hidden = true;
+        successEl.hidden = false;
+      } catch (_) {
+        errorEl.hidden = false;
       }
+    });
+
+    input.addEventListener('input', function() {
+      if (!errorEl.hidden) errorEl.hidden = true;
     });
   }
 
-  submitForm("form-org", "success-org");
+  setupForm('form-hero', 'success-hero', 'error-hero');
+  setupForm('form-card', 'success-card', 'error-card');
 
-  // Dyslexia toggle
-  const toggle = document.getElementById("dyslexia-toggle");
-  if (localStorage.getItem("dyslexic") === "true") {
-    document.body.classList.add("dyslexic");
-    toggle.setAttribute("aria-pressed", "true");
+  const toggle = document.getElementById('dyslexia-toggle');
+  if (localStorage.getItem('dyslexic') === 'true') {
+    document.body.classList.add('dyslexic');
+    toggle.setAttribute('aria-pressed', 'true');
   }
-  toggle.addEventListener("click", function() {
-    const isOn = document.body.classList.toggle("dyslexic");
-    toggle.setAttribute("aria-pressed", isOn ? "true" : "false");
-    localStorage.setItem("dyslexic", isOn);
+  toggle.addEventListener('click', function() {
+    const isOn = document.body.classList.toggle('dyslexic');
+    toggle.setAttribute('aria-pressed', String(isOn));
+    localStorage.setItem('dyslexic', String(isOn));
   });
-
-  // Footer turns white over dark bottom section
-  const footer = document.querySelector('.footer');
-  const genzSection = document.querySelector('.genz-section');
-
-  const footerObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        footer.style.color = 'rgba(255,255,255,0.7)';
-        footer.querySelectorAll('.footer-link').forEach(a => a.style.color = 'rgba(255,255,255,0.9)');
-      } else {
-        footer.style.color = 'rgba(0,0,0,0.6)';
-        footer.querySelectorAll('.footer-link').forEach(a => a.style.color = 'rgba(0,0,0,0.75)');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  footerObserver.observe(genzSection);
-
-  function togglePanel(id) {
-    const panel = document.getElementById(id);
-    const btn = panel.querySelector('.panel-trigger');
-    const isOpen = panel.classList.contains('open');
-
-    // Close all panels
-    document.querySelectorAll('.panel').forEach(p => {
-      p.classList.remove('open');
-      p.querySelector('.panel-trigger').setAttribute('aria-expanded', 'false');
-    });
-
-    // Open clicked one if it was closed
-    if (!isOpen) {
-      panel.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  }
 </script>
 
 </body>
