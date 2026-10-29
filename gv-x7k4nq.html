@@ -8,12 +8,12 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="preview.png">
 
-  <meta name="description" content="Policy for the next generation. GenView publishes research on the decisions that will shape Britain." />
+  <meta name="description" content="Gen Z insight and strategy for organisations that mean it." />
   <link rel="canonical" href="https://genview.uk/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="GenView" />
-  <meta property="og:description" content="Policy for the next generation. GenView publishes research on the decisions that will shape Britain." />
+  <meta property="og:description" content="Gen Z insight and strategy for organisations that mean it." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genview.uk/" />
   <meta property="og:image" content="https://genview.uk/preview.png" />
@@ -23,7 +23,7 @@
   <!-- Twitter / WhatsApp -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="GenView" />
-  <meta name="twitter:description" content="Policy for the next generation. GenView publishes research on the decisions that will shape Britain." />
+  <meta name="twitter:description" content="Gen Z insight and strategy for organisations that mean it." />
   <meta name="twitter:image" content="https://genview.uk/preview.png" />
 
   <link rel="stylesheet" href="fonts/leaguespartan.css">
@@ -103,14 +103,6 @@
       font-weight: 700;
       letter-spacing: -0.5px;
       margin-bottom: 16px;
-    }
-
-    .hero-sub {
-      font-size: clamp(16px, 1.8vw, 22px);
-      font-weight: 400;
-      color: rgba(0,0,0,0.55);
-      margin: 8px 0 20px;
-      letter-spacing: 0;
     }
 
     .hero h1 {
@@ -470,9 +462,23 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-brand">GenView</div>
-    <div class="hero-sub">Policy for the next generation.</div>
-    <h1>Shaping Britain for those<br>who will inherit it.</h1>
+    <h1>Gen Z has opinions.<br>Time you heard them.</h1>
     <button class="scroll-hint" aria-label="Scroll down"
+      onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <!-- STAT -->
+  <div id="stat-section" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 24px; opacity: 0; transition: opacity 1.4s ease;">
+    <div style="max-width: 780px;">
+      <div style="font-size: clamp(28px, 4.5vw, 58px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px;">90% of UK Gen Z expect brands to demonstrate genuine purpose beyond profit.</div>
+      <div style="font-size: 13px; color: rgba(0,0,0,0.45);">Dentsu UK, 2024</div>
+    </div>
+    <button class="scroll-hint" style="margin-top: 60px;" aria-label="Scroll down"
       onclick="document.querySelector('.wrap').scrollIntoView({behavior: 'smooth'})">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round">
@@ -484,7 +490,7 @@
   <!-- PANELS -->
   <div class="wrap">
     <div style="font-size: clamp(32px, 5vw, 64px); font-weight: 700; letter-spacing: -1.5px; text-align: center; margin-bottom: 16px;">GenView</div>
-    <p class="panels-intro">Policy for the next generation.</p>
+    <p class="panels-intro">Gen Z insight and strategy for organisations that mean it.</p>
 
     <div class="panel" id="panel-1" style="border-top: none;">
       <button class="panel-trigger" onclick="togglePanel('panel-1')" aria-expanded="false">
@@ -495,7 +501,8 @@
       </button>
       <div class="panel-body">
         <div class="panel-body-inner">
-          <p>GenView champions policy for the next generation. We publish research on the decisions that will define Britain for years to come, bring decision-makers face to face with the generation their choices affect most, and take the argument to the country.</p>
+          <p>GenView runs a standing panel of paid, committed Gen Z participants – and uses in-depth qualitative research, not mass surveys, to get to the bottom of how young people actually think, feel, and consume. It's insight you can't get from surveys.</p>
+          <p>Most research tells you what young people say. GenView tells you why, and what's coming next.</p>
         </div>
       </div>
     </div>
@@ -509,14 +516,29 @@
       </button>
       <div class="panel-body">
         <div class="panel-body-inner">
-          <p>The next generation is different. Young people are active well beyond the ballot box – in what they buy, the causes they back and the campaigns they join. From votes at 16 to the social media ban, government policy is landing on young people's doorstep more than ever before. Yet the decisions that will shape their lives for years to come are too often made without hearing them.</p>
+          <p>The UK Government co-produced its National Youth Strategy directly with young people for the first time in history. Accountability to Gen Z is no longer just good practice – it's a growing expectation of organisations that do good.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-3">
+      <button class="panel-trigger" onclick="togglePanel('panel-3')" aria-expanded="false">
+        <span class="panel-trigger-label">Who we work with</span>
+        <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="panel-body">
+        <div class="panel-body-inner">
+          <p>GenView works with brands, organisations, and marketing teams across any sector where getting Gen Z right is non-negotiable. From FMCG to financial services, tech to entertainment – anyone who can't afford to get young people wrong.</p>
+          <p>We also work with charities, foundations, and policy teams who need to understand and authentically engage with young people.</p>
         </div>
       </div>
     </div>
 
     <div class="panel" id="panel-4">
       <button class="panel-trigger" onclick="togglePanel('panel-4')" aria-expanded="false">
-        <span class="panel-trigger-label">About</span>
+        <span class="panel-trigger-label">Why GenView</span>
         <svg class="panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
@@ -524,23 +546,25 @@
       <div class="panel-body">
         <div class="panel-body-inner">
           <div class="founder-block">
-            <img src="luke.jpg" alt="Luke Hall, Director of GenView" class="founder-photo">
+            <img src="luke.jpg" alt="Luke Hall, Founder of GenView" class="founder-photo">
             <div>
               <a href="https://www.linkedin.com/in/luke-daniel-hall" target="_blank" rel="noopener noreferrer" class="founder-name" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(0,0,0,0.3);">Luke Hall</a>
-              <div class="founder-role">Director, GenView</div>
+              <div class="founder-role">Founder, GenView</div>
             </div>
           </div>
-          <p>Luke Hall is Director of GenView. His work spans roles in Parliament, industry and the third sector, and focuses on shaping the decisions that will define Britain, in the interests of those who will inherit it.</p>
+          <p>Most Gen Z insight comes from the outside looking in. GenView's founder has spent years embedded in the policy, advocacy, and institutional worlds that actually shape how young people live – from policymakers in the House of Commons to speaking at international fora such as UNICEF and consumer business summits. That's a different kind of intelligence.</p>
+          <p>The combination no competitor has built: a standing panel, in-depth co-design, and a closed loop with every young person involved – making the research richer, the data more honest, and the insight more reliable.</p>
         </div>
       </div>
     </div>
 
     <!-- CTA PANELS -->
     <div class="work-with-us-box">
-      <div class="work-with-us-title">Follow our work</div>
-      <p>Sign up for updates, or get in touch at <a href="mailto:hello@genview.uk" style="color:inherit;">hello@genview.uk</a>.</p>
+      <div class="work-with-us-title">Work with us</div>
+      <p>Get in touch to talk about what GenView can do for your team.</p>
       <a href="mailto:hello@genview.uk?subject=GenView Enquiry" class="work-with-us-link">Contact us →</a>
-      <form id="form-org" style="margin-top: 28px;">
+      <div class="work-with-us-divider">Or sign up to receive GenView's insights direct to your inbox.</div>
+      <form id="form-org">
         <input type="hidden" name="source" value="organisation">
         <input type="email" name="email" placeholder="Enter your email" required />
         <button type="submit">Submit</button>
@@ -550,10 +574,16 @@
 
   </div>
 
-  <!-- WRITE FOR GENVIEW -->
+  <!-- 18-25 SECTION -->
   <div class="genz-section">
-    <p>Got something to say about the Britain you'll inherit? Write for GenView.</p>
-    <a href="mailto:hello@genview.uk?subject=Write%20for%20GenView" style="display:inline-block; padding:14px 28px; font-size:clamp(15px,1.6vw,18px); font-family:inherit; font-weight:700; background:white; color:black; border:none; border-radius:10px; cursor:pointer; text-decoration:none;">Get in touch</a>
+    <h2>Are you 18–25?</h2>
+    <p>Want to get paid for your opinions, and shape the organisations that you interact with every day?</p>
+    <form id="form-panel">
+      <input type="hidden" name="source" value="panel">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Join the waitlist</button>
+    </form>
+    <div id="success-panel" style="display:none; margin-top:16px; font-size:15px; color:rgba(255,255,255,0.7);">You're on the list. We'll be in touch.</div>
   </div>
 
   <!-- FOOTER -->
@@ -590,6 +620,7 @@
   }
 
   submitForm("form-org", "success-org");
+  submitForm("form-panel", "success-panel");
 
   // Dyslexia toggle
   const toggle = document.getElementById("dyslexia-toggle");
@@ -603,8 +634,20 @@
     localStorage.setItem("dyslexic", isOn);
   });
 
-  // Footer turns white over dark bottom section
+  // Footer turns white over black 18-25 section
   const footer = document.querySelector('.footer');
+  // Fade in stat when it enters view
+  const statSection = document.getElementById("stat-section");
+  const statObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        statSection.style.opacity = "1";
+        statObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  statObserver.observe(statSection);
+
   const genzSection = document.querySelector('.genz-section');
 
   const footerObserver = new IntersectionObserver(function(entries) {
